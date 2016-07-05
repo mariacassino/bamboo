@@ -47,6 +47,7 @@ end
 
 
 gem 'devise'
+gem 'devise_invitable', '~> 1.5.2'
 gem 'pundit'
 gem 'twitter-bootstrap-rails'
 gem 'bootstrap_form'
