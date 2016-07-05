@@ -1,6 +1,12 @@
 class ShopsController < ApplicationController
 
   def index
+    @shops = Shop.all
+  end
+
+  def show
+    @shop = Shop.find(params[:id])
+    @items = @shop.items.all
   end
 
   def import
@@ -14,5 +20,7 @@ class ShopsController < ApplicationController
 
   def test
   end
+
+
 
 end

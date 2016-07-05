@@ -1,6 +1,13 @@
 class ItemController < ApplicationController
 
 def index
-end 
+  @items = Item.all 
+end
+
+def edit
+end
+
+
+
 
 end
