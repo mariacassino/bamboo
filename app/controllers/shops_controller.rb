@@ -23,7 +23,6 @@ class ShopsController < ApplicationController
 
 
 
-  end
 
 
 end
