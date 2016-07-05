@@ -9,6 +9,8 @@ Rails.application.routes.draw do
    resources :items, shallow: true
  end
 
+ resources :charges
+
 
 #  resources :posts do
 #    member do
