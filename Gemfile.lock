@@ -73,7 +73,13 @@ GEM
       railties (>= 4.1.0, < 5.1)
       responders
       warden (~> 1.2.3)
+<<<<<<< HEAD
     diff-lcs (1.2.5)
+=======
+    devise_invitable (1.5.5)
+      actionmailer (>= 3.2.6, < 5)
+      devise (>= 3.2.0)
+>>>>>>> c4ea99ada5a2d6a9ce73ac0cde72044bf4e09c69
     erubis (2.7.0)
     execjs (2.7.0)
     figaro (1.1.1)
@@ -242,7 +248,11 @@ DEPENDENCIES
   capybara
   coffee-rails (~> 4.1.0)
   devise
+<<<<<<< HEAD
   figaro
+=======
+  devise_invitable (~> 1.5.2)
+>>>>>>> c4ea99ada5a2d6a9ce73ac0cde72044bf4e09c69
   httparty
   jbuilder (~> 2.0)
   jquery-rails
