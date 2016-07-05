@@ -7,11 +7,13 @@ Rails.application.routes.draw do
 
   resources :shops do
    resources :items, shallow: true
+   collection { post :import }
  end
 
  resources :charges
 
 
+ get "/test" => 'shops#test'
 #  resources :posts do
 #    member do
 #     put "like", to: "posts#upvote"
