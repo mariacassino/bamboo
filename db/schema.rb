@@ -19,6 +19,9 @@ ActiveRecord::Schema.define(version: 20160705204702) do
   create_table "items", force: :cascade do |t|
     t.string   "name"
     t.text     "description"
+    t.datetime "created_at",                          null: false
+    t.datetime "updated_at",                          null: false
+    t.decimal  "price",       precision: 8, scale: 2
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
     t.string   "shop_id"
