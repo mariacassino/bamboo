@@ -4,7 +4,6 @@ class ChargesController < ApplicationController
   end
 
   def create
-    binding.pry
     # Arbitrary amount:
     @amount = 500 #This is $5
 
@@ -19,7 +18,6 @@ class ChargesController < ApplicationController
     :description => 'Rails Stripe customer',
     :currency    => 'usd'
     )
-    binding.pry
     rescue Stripe::CardError => e
       flash[:error] = e.message
       redirect_to new_charge_path
