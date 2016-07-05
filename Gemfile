@@ -45,9 +45,8 @@ group :development do
   gem 'spring'
 end
 
-
+gem 'pony', '~> 1.11'
 gem 'devise'
-gem 'devise_invitable', '~> 1.5.2'
 gem 'pundit'
 gem 'twitter-bootstrap-rails'
 gem 'bootstrap_form'
