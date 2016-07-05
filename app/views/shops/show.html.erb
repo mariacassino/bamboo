@@ -1,11 +1,17 @@
 <%= @shop.name %>
+<li><%= form_tag import_shops_path, multipart: true do %>
+  <%= file_field_tag :file %>
+  <%= submit_tag "Import" %></li>
 
+<br><br>
 <% @items.each do |item| %>
 <div class="col-lg-3">
   <div class="well sidebar-nav">
     <ul class="nav nav-list">
-      <li><%= link_to item.name, item_path(item) %></li>
+      <li><%=link_to item.name, item_path(item) %></li>
       <li><%= item.description %></li>
+
+      <% end %>
     </ul>
   </div><!--/.well -->
 </div><!--/span-->

@@ -26,4 +26,18 @@ class ShopsController < ApplicationController
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 end
