@@ -16,6 +16,7 @@ class ShopsController < ApplicationController
       #Create objects here from each row
       row
     end
+    
   end
 
   def test
