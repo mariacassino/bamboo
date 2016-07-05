@@ -10,8 +10,7 @@ class ShopsController < ApplicationController
   end
 
   def import
-    binding.pry
-    # TODO #needs to be moved to shops show page
+    # TODO #needs to create item objects and have proper redirection
     file = params[:file]
     CSV.foreach(file.path, headers: true) do |row|
       #Create objects here from each row
