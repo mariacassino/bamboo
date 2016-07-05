@@ -23,4 +23,5 @@ class ShopsController < ApplicationController
 
 
 
+
 end

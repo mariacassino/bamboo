@@ -11,3 +11,5 @@ Shop.create(name: "Maria's Awesome Shop", location: "Raleigh, NC")
 Shop.create(name: "Vega's Box of Wonders", location: "Valhalla")
 
 User.create(email: "maria.cassino@gmail.com", password: "password")
+
+Item.create(name: "Solid Gold Aardwolf Statue", description: "magickal talisman", shop_id: 1)
