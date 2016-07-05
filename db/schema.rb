@@ -21,8 +21,8 @@ ActiveRecord::Schema.define(version: 20160705215922) do
     t.text     "description"
     t.datetime "created_at",                          null: false
     t.datetime "updated_at",                          null: false
-    t.decimal  "price",       precision: 8, scale: 2
     t.string   "shop_id"
+    t.decimal  "price",       precision: 8, scale: 2
     t.integer  "user_id"
   end
 
