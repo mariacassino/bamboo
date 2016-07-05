@@ -74,10 +74,6 @@ GEM
       responders
       warden (~> 1.2.3)
     diff-lcs (1.2.5)
-    devise_invitable (1.5.5)
-      actionmailer (>= 3.2.6, < 5)
-      devise (>= 3.2.0)
-    diff-lcs (1.2.5)
     erubis (2.7.0)
     execjs (2.7.0)
     figaro (1.1.1)
@@ -123,8 +119,6 @@ GEM
     orm_adapter (0.5.0)
     pg (0.18.4)
     pkg-config (1.1.7)
-    pony (1.11)
-      mail (>= 2.0)
     pry (0.10.3)
       coderay (~> 1.1.0)
       method_source (~> 0.8.1)
@@ -249,14 +243,11 @@ DEPENDENCIES
   coffee-rails (~> 4.1.0)
   devise
   figaro
-  devise_invitable (~> 1.5.2)
-  figaro
   httparty
   jbuilder (~> 2.0)
   jquery-rails
   launchy
   pg (~> 0.15)
-  pony (~> 1.11)
   pry-rails
   pundit
   quiet_assets
