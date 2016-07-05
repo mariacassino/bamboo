@@ -6,7 +6,9 @@ Rails.application.routes.draw do
   resources :home
 
   resources :shops do
-   resources :items, shallow: true
+   resources :items, shallow: true do
+     resources :charges
+   end
    collection { post :import }
  end
 

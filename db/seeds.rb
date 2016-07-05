@@ -6,10 +6,11 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
+maria = User.create(email: "maria.cassino@gmail.com", password: "password")
+vega = User.create(email: "jorgevp5@gmail.com", password: "password")
 
-Shop.create(name: "Maria's Awesome Shop", location: "Raleigh, NC")
-Shop.create(name: "Vega's Box of Wonders", location: "Valhalla")
+maria.shops.create!(name: "Maria's Awesome Shop", location: "Raleigh, NC")
+vega.shops.create!(name: "Vega's Box of Wonders", location: "Valhalla")
 
-User.create(email: "maria.cassino@gmail.com", password: "password")
 
-Item.create(name: "Solid Gold Aardwolf Statue", description: "magickal talisman", shop_id: 1)
+maria.items.create!(name: "Solid Gold Aardwolf Statue", description: "magickal talisman", shop_id: 1)
