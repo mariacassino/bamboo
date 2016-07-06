@@ -10,8 +10,7 @@ class ShopPolicy < ApplicationPolicy
   end
 
   def edit?
-    # is_mod? || user.admin?
-    is_seller?
+    is_seller? || user.admin?
   end
 
   def create?
@@ -19,12 +18,11 @@ class ShopPolicy < ApplicationPolicy
   end
 
   def update?
-    # is_mod? || user.admin?
-    is_seller?
+    is_seller? || user.admin?
   end
 
   def destroy?
-    is_seller?
+    is_seller? || user.admin?
   end
 
 

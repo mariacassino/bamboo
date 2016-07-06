@@ -19,15 +19,15 @@ class ItemPolicy < ApplicationPolicy
   end
 
   def edit?
-    is_seller?
+    is_seller? || user.admin?
   end
 
   def update?
-    is_seller?
+    is_seller? || user.admin?
   end
 
   def destroy?
-    is_seller?
+    is_seller? || user.admin?
   end
 
   private

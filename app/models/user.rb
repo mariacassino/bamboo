@@ -8,4 +8,8 @@ class User < ActiveRecord::Base
          has_many :shops, through: :sellers
          has_many :items
 
+    def admin?
+      self.admin == true
+    end
+
 end
