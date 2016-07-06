@@ -18,7 +18,7 @@ gem 'quiet_assets'
 gem 'rails-erd'
 gem 'stripe'
 gem 'figaro'
-
+gem 'pony'
 
 group :development, :test do
   gem 'byebug'
