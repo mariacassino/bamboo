@@ -23,6 +23,6 @@
     </ul>
   </div><!--/.well -->
   <% # TODO need to pass local variables to partial %>
-  <%= render partial: 'shops/stripe_button', locals: { item: item }%>
+  <%= render partial: 'shops/stripe_button', locals: { item: item, shop: @shop }%>
 </div><!--/span-->
 <% end %>

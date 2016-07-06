@@ -1,26 +1,20 @@
 Rails.application.routes.draw do
   devise_for :users
 
-  root 'home#show'
+  root 'home#index'
 
   resources :home
 
   resources :shops do
-   resources :items do #, shallow: true do
+   resources :items do
      resources :charges
    end
    collection { post :import }
  end
 
- resources :charges
 
 
  get "/test" => 'shops#test'
-
-
-
-
-
 #  resources :posts do
 #    member do
 #     put "like", to: "posts#upvote"
@@ -30,6 +24,7 @@ Rails.application.routes.draw do
 # end
 
 # resources :users, only: [:show]
+
 
 
   # The priority is based upon order of creation: first created -> highest priority.
