@@ -29,7 +29,7 @@ class ShopsController < ApplicationController
   def create
     @shop = Shop.new
     # @shop.user_id = current_user.id
-    if @shop.save
+    if @shop.save(approved_params)
       flash[:notice] = "Success!"
       redirect_to @shop
     else
@@ -44,7 +44,7 @@ class ShopsController < ApplicationController
   def update
     @shops = Shop.all
     @shop = Shop.find(params[:id])
-    if @shop.update
+    if @shop.update(approved_params)
       flash[:notice] = "Success!"
       redirect_to shops_path
     else
@@ -54,27 +54,17 @@ class ShopsController < ApplicationController
 
   def destroy
     @shop = Shop.find(params[:id])
-    @board.destroy
+    @shop.destroy
     redirect_to shops_path
   end
 
 
 
+  private
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+  def approved_params
+    params.require(:shop).permit(:name, :description, :location)
+  end
 
 
 end
