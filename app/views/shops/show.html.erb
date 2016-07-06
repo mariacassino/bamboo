@@ -1,4 +1,4 @@
-<%= @shop.name %>
+<h1><%= @shop.name %></h1>
 <li><%= form_tag import_shops_path, multipart: true do %>
   <%= hidden_field_tag :shop_id, @shop.id %>
   <%= file_field_tag :file %>
@@ -10,19 +10,15 @@
               :class => 'btn btn-primary' %>
 
 <br><br>
-<div class="col-lg-3">
-  <div class="well sidebar-nav">
-    <ul class="nav nav-list">
-      <% @items.each do |item| %>
+
+  <% @items.each do |item| %>
+  <div class="well">
+    <ul>
       <li><%=link_to item.name, shop_item_path(@shop, item.id) %></li>
       <li><%= item.description %></li>
-
-
-
-
+      <% # TODO need to pass local variables to partial %>
+      <%= render partial: 'shops/stripe_button', locals: { item: item, shop: @shop }%>
     </ul>
   </div><!--/.well -->
-  <% # TODO need to pass local variables to partial %>
-  <%= render partial: 'shops/stripe_button', locals: { item: item, shop: @shop }%>
-</div><!--/span-->
+
 <% end %>
