@@ -13,15 +13,13 @@
 <div class="col-lg-3">
   <div class="well sidebar-nav">
     <ul class="nav nav-list">
-      <li><%=link_to item.name, item_path(item) %></li>
+      <li><%=link_to item.name, shop_item_path(@shop, item.id) %></li>
       <li><%= item.description %></li>
       <td>
-        <%= link_to t('.show', :default => t("helpers.links.show")),
-                    item_path(item), :class => 'btn btn-default btn-xs' %>
         <%= link_to t('.edit', :default => t("helpers.links.edit")),
-                    edit_item_path(item), :class => 'btn btn-default btn-xs' %>
+                    edit_shop_item_path(@shop, item.id), :class => 'btn btn-default btn-xs' %>
         <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
-                    item_path(item),
+                    shop_item_path(@shop, item.id),
                     :method => :delete,
                     :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
                     :class => 'btn btn-xs btn-danger' %>

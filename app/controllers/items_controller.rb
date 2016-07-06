@@ -1,16 +1,18 @@
 class ItemsController < ApplicationController
 
 def index
-  @items = Item.all
+  @shop = Shop.find(params[:shop_id])
+  @items = @shop.items.all
 end
 
 def show
-  @item = Item.find(params[:id])
+  @shop = Shop.find(params[:shop_id])
+  @item = @shop.items.find(params[:shop_id])
 end
 
 def new
   @shop = Shop.find(params[:shop_id])
-  @item = @shop.items.new 
+  @item = @shop.items.new
   # @item.user_id = current_user.id
 end
 
@@ -27,17 +29,19 @@ def create
 end
 
 def edit
-  @item = Item.find(params[:id])
+  @shop = Shop.find(params[:shop_id])
+  @items = @shop.items.all
+  @item = @shop.items.find(params[:shop_id])
 end
 
 def update
-  @items = Item.all
-  @item = Item.find(params[:id])
+  @shop = Shop.find(params[:shop_id])
+  @item = @shop.items.find(params[:shop_id])
   if @item.update(approved_params)
     flash[:notice] = "Success!"
-    redirect_to @item
+    redirect_to shop_item_path
   else
-    redirect_to @item
+    redirect_to shop_item_path
   end
 end
 

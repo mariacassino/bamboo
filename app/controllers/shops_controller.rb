@@ -6,6 +6,7 @@ class ShopsController < ApplicationController
 
   def show
     @shop = Shop.find(params[:id])
+    # @item = @shop.items.first
     @items = @shop.items.all
   end
 
