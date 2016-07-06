@@ -15,12 +15,40 @@ class ChargesController < ApplicationController
     :customer    => customer.id,
     :amount      => @amount,
     :description => 'Rails Stripe customer',
+    # :metadata    => { "Sold by" => "#{@item.user.email}"},
     :currency    => 'usd'
     )
+
+    email
+
     rescue Stripe::CardError => e
       flash[:error] = e.message
-      redirect_to new_charge_path
 
+      redirect_to new_charge_pathß
+  end
+
+
+  def email
+    # TODO Create layout and dynamic content
+    Pony.options = {
+      :via => :smtp,
+      :via_options => {
+        :address => 'smtp.sendgrid.net',
+        :port => '587',
+        :domain => 'shop-bamboo.herokuapp.com',
+        :user_name => ENV['SENDGRID_USERNAME'],
+        :password => ENV['SENDGRID_PASSWORD'],
+        :authentication => :plain,
+        :enable_starttls_auto => true
+      }
+    }
+
+
+    Pony.mail :to => 'jorgevp5@gmail.com',
+    :from => "no-reply@shop-bamboo.herokuapp.com",
+    :headers => { 'Content-Type' => 'text/html' },
+    :subject => "Test Email",
+    :body => "test"
   end
 
 end

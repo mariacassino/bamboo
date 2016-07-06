@@ -119,6 +119,8 @@ GEM
     orm_adapter (0.5.0)
     pg (0.18.4)
     pkg-config (1.1.7)
+    pony (1.11)
+      mail (>= 2.0)
     pry (0.10.3)
       coderay (~> 1.1.0)
       method_source (~> 0.8.1)
@@ -248,6 +250,7 @@ DEPENDENCIES
   jquery-rails
   launchy
   pg (~> 0.15)
+  pony
   pry-rails
   pundit
   quiet_assets
