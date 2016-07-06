@@ -13,4 +13,5 @@ maria.shops.create!(name: "Maria's Awesome Shop", location: "Raleigh, NC")
 vega.shops.create!(name: "Vega's Box of Wonders", location: "Valhalla")
 
 
-maria.items.create!(name: "Solid Gold Aardwolf Statue", description: "magickal talisman", shop_id: 1)
+maria.items.create!(name: "Solid Gold Aardwolf Statue", description: "magickal talisman", shop_id: 1, price: 159.99)
+vega.items.create!(name: "Ocarina", description: "Let's you travel through time", shop_id: 2, price: 99.99)

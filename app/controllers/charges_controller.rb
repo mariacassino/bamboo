@@ -4,9 +4,8 @@ class ChargesController < ApplicationController
   end
 
   def create
-    # Arbitrary amount:
-    @amount = 500 #This is $5
-
+    item = Item.find params[:item_id]
+    @amount = item.stripe_amount.to_i #This is $5
     customer = Stripe::Customer.create(
     :email => params[:stripeEmail],
     :source  => params[:stripeToken]

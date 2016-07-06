@@ -3,7 +3,7 @@
   <%= hidden_field_tag :shop_id, @shop.id %>
   <%= file_field_tag :file %>
   <%= submit_tag "Import" %></li>
-
+  <% end %>
 <br><br>
 <% @items.each do |item| %>
 <div class="col-lg-3">
@@ -12,8 +12,10 @@
       <li><%=link_to item.name, item_path(item) %></li>
       <li><%= item.description %></li>
 
-      <% end %>
+
     </ul>
   </div><!--/.well -->
+  <% # TODO need to pass local variables to partial %>
+  <%= render partial: 'shops/stripe_button', locals: { item: item }%>
 </div><!--/span-->
 <% end %>
