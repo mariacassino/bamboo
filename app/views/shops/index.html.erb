@@ -1,9 +1,13 @@
-
+<%= link_to t('.new', :default => t("helpers.links.new")),
+            new_shop_path(@shop),
+            :class => 'btn btn-primary' %>
+<br><br>
 <% @shops.each do |shop| %>
 <div class="col-lg-3">
   <div class="well sidebar-nav">
     <ul class="nav nav-list">
       <li><%= link_to shop.name, shop_path(shop) %></li>
+      <li><%= shop.description %></li>
       <li><%= shop.location %></li>
       <%= link_to t('.edit', :default => t("helpers.links.edit")),
           edit_shop_path(shop), :class => 'btn btn-default btn-xs' %>
