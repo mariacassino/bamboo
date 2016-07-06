@@ -1,4 +1,6 @@
 class ShopsController < ApplicationController
+  skip_after_action :verify_authorized, only: [:index, :show]
+
 
   def index
     @shops = Shop.all
