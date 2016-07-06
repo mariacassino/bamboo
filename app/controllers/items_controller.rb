@@ -12,14 +12,18 @@ end
 
 def new
   @shop = Shop.find(params[:shop_id])
+  authorize @shop
   @item = @shop.items.new
-  # @item.user_id = current_user.id
+  authorize @item
+  @item.user_id = current_user.id
 end
 
 def create
   @shop = Shop.find(params[:shop_id])
   @item = @shop.items.new(approved_params)
-  # @item.user_id = current_user.id
+  @item.user_id = current_user.id
+  authorize @item
+  authorize @shop
   if @item.save
     flash[:notice] = "Success!"
     redirect_to shop_path(@shop)
@@ -30,13 +34,16 @@ end
 
 def edit
   @shop = Shop.find(params[:id])
+  authorize @shop 
   @items = @shop.items.all
   @item = @shop.items.find(params[:shop_id])
+  authorize @item
 end
 
 def update
   @shop = Shop.find(params[:shop_id])
   @item = @shop.items.find(params[:id])
+  authorize @item
   if @item.update(approved_params)
     flash[:notice] = "Success!"
     redirect_to shop_item_path
@@ -48,6 +55,7 @@ end
 def destroy
   @shop = Shop.find(params[:id])
   @item = @shop.items.find(params[:shop_id])
+  authorize @item
   @item.destroy
   redirect_to shop_path
 end

@@ -30,13 +30,13 @@ class ShopsController < ApplicationController
 
   def new
     @shop = Shop.new
-    # @shop.user_id = current_user.id
+    @shop.seller_id = current_user.id
   end
 
   def create
-    @shop = Shop.new
-    # @shop.user_id = current_user.id
-    if @shop.save(approved_params)
+    @shop = Shop.new(approved_params)
+    @shop.seller_id = current_user.id
+    if @shop.save
       flash[:notice] = "Success!"
       redirect_to @shop
     else
@@ -46,11 +46,13 @@ class ShopsController < ApplicationController
 
   def edit
     @shop = Shop.find(params[:id])
+    authorize @shop
   end
 
   def update
     @shops = Shop.all
     @shop = Shop.find(params[:id])
+    authorize @shop
     if @shop.update(approved_params)
       flash[:notice] = "Success!"
       redirect_to shops_path
@@ -61,6 +63,7 @@ class ShopsController < ApplicationController
 
   def destroy
     @shop = Shop.find(params[:id])
+    authorize @shop
     @shop.destroy
     redirect_to shops_path
   end
