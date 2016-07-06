@@ -30,12 +30,12 @@ class ShopsController < ApplicationController
 
   def new
     @shop = Shop.new
-    @shop.seller_id = current_user.id
+    @shop.user_id = current_user.id
   end
 
   def create
     @shop = Shop.new(approved_params)
-    @shop.seller_id = current_user.id
+    @shop.user_id = current_user.id
     if @shop.save
       flash[:notice] = "Success!"
       redirect_to @shop

@@ -12,9 +12,9 @@ end
 
 def new
   @shop = Shop.find(params[:shop_id])
-  authorize @shop
+  # authorize @shop
   @item = @shop.items.new
-  authorize @item
+  # authorize @item
   @item.user_id = current_user.id
 end
 
@@ -34,7 +34,7 @@ end
 
 def edit
   @shop = Shop.find(params[:id])
-  authorize @shop 
+  # authorize @shop
   @items = @shop.items.all
   @item = @shop.items.find(params[:shop_id])
   authorize @item

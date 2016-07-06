@@ -5,7 +5,6 @@ class ItemPolicy < ApplicationPolicy
     @item = item
   end
 
-
   def show?
     true
   end
@@ -15,7 +14,7 @@ class ItemPolicy < ApplicationPolicy
   end
 
   def create?
-    is_seller?
+    is_seller? || shop_creator?
   end
 
   def edit?
@@ -35,6 +34,10 @@ class ItemPolicy < ApplicationPolicy
 
   def is_seller?
     user == item.user
+  end
+
+  def shop_creator?
+    user == item.shop.user
   end
 
 

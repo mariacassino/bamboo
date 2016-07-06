@@ -4,8 +4,8 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
-         has_many :sellers
-         has_many :shops, through: :sellers
+        #  has_many :sellers
+         has_many :shops
          has_many :items
 
     def admin?
