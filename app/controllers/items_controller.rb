@@ -9,14 +9,16 @@ def show
 end
 
 def new
-  @item = Item.new
+  @shop = Shop.find(params[:shop_id])
+  @item = @shop.items.new 
   # @item.user_id = current_user.id
 end
 
 def create
-  @item = Item.new
+  @shop = Shop.find(params[:shop_id])
+  @item = @shop.items.new (approved_params)
   # @item.user_id = current_user.id
-  if @item.save(approved_params)
+  if @item.save
     flash[:notice] = "Success!"
     redirect_to @item
   else
@@ -35,7 +37,7 @@ def update
     flash[:notice] = "Success!"
     redirect_to @item
   else
-    redirect_to @item 
+    redirect_to @item
   end
 end
 
