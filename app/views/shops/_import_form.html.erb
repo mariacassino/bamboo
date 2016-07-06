@@ -1,0 +1,11 @@
+<li><%= form_tag import_shops_path, multipart: true do %>
+  <%= hidden_field_tag :shop_id, shop.id %>
+  <%= file_field_tag :file %>
+  <%= submit_tag "Import" %></li>
+  <% end %>
+<br><br>
+  <%= link_to t('.new', :default => t("helpers.links.new")),
+              new_shop_item_path(shop),
+              :class => 'btn btn-primary' %>
+
+<br><br>
