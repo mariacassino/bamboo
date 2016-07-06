@@ -28,7 +28,7 @@ class ShopsController < ApplicationController
 
   def create
     @shop = Shop.new
-    @shop.user_id = current_user.id
+    # @shop.user_id = current_user.id
     if @shop.save
       flash[:notice] = "Success!"
       redirect_to @shop
