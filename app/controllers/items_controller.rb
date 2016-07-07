@@ -53,8 +53,8 @@ def update
 end
 
 def destroy
-  @shop = Shop.find(params[:id])
-  @item = @shop.items.find(params[:shop_id])
+  @shop = Shop.find(params[:shop_id])
+  @item = @shop.items.find(params[:id])
   authorize @item
   @item.destroy
   redirect_to shop_path

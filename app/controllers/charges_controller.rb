@@ -19,16 +19,17 @@ class ChargesController < ApplicationController
     :currency    => 'usd'
     )
 
-    email
+    email customer
+    binding.pry
 
     rescue Stripe::CardError => e
       flash[:error] = e.message
 
-      redirect_to new_charge_pathß
+      redirect_to new_charge_path
   end
 
 
-  def email
+  def email customer
     # TODO Create layout and dynamic content
     Pony.options = {
       :via => :smtp,
@@ -44,11 +45,11 @@ class ChargesController < ApplicationController
     }
 
 
-    Pony.mail :to => 'jorgevp5@gmail.com',
+    Pony.mail :to => customer.email,
     :from => "no-reply@shop-bamboo.herokuapp.com",
     :headers => { 'Content-Type' => 'text/html' },
-    :subject => "Test Email",
-    :body => "test"
+    :subject => "Receipt",
+    :body => "#{customer.email} here is your receipt"
   end
 
 end
