@@ -15,12 +15,15 @@ class ChargesController < ApplicationController
     :customer    => customer.id,
     :amount      => @amount,
     :description => 'Rails Stripe customer',
-    # :metadata    => { "Sold by" => "#{@item.user.email}"},
-    :currency    => 'usd'
+    :metadata    => {
+      item: @item.name,
+      description: @item.description
+    },
+    :currency    => 'usd',
+    :receipt_email => customer.email
     )
 
-    email customer
-    binding.pry
+    email customer, charge
 
     rescue Stripe::CardError => e
       flash[:error] = e.message
@@ -29,7 +32,7 @@ class ChargesController < ApplicationController
   end
 
 
-  def email customer
+  def email customer, charge
     # TODO Create layout and dynamic content
     Pony.options = {
       :via => :smtp,
@@ -49,7 +52,7 @@ class ChargesController < ApplicationController
     :from => "no-reply@shop-bamboo.herokuapp.com",
     :headers => { 'Content-Type' => 'text/html' },
     :subject => "Receipt",
-    :body => "#{customer.email} here is your receipt"
+    :body => "Thank you for your purchase. You have purchased a #{charge.metadata.item} for $#{charge.amount / 100.00}"
   end
 
 end
