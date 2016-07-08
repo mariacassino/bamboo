@@ -52,23 +52,23 @@ describe ShopsController do
 
 
 
-    it "doesn't let users delete other users' shops" do
-    me = User.create!(email: "maria@gmail.com", password: "password")
-    sign_in me
-    them = User.create!(email: "someone@gmail.com", password: "password")
-    sign_in them
-
-    myshop = post :create, shop: {name: "My Shop", description: "my awesome shop", location: "my town"}, user_id: me.id, id: me.shops.last.id
-    theirshop = post :create, shop: {name: "Their Shop", description: "their awesome shop", location: "their town"}, user_id: them.id, id: them.shops.last.id
-
-    user_count = User.all.count
-    count = Shop.all.count
-    response = delete :destroy, id: myshop.id
-
-    expect(user_count).to eq 2
-    expect(response.status).to eq 302
-    # List.find list.id works ...
-    expect(shop.user.shops.count).to eq count
-  end
+  #   it "doesn't let users delete other users' shops" do
+  #   me = User.create!(email: "maria@gmail.com", password: "password")
+  #   sign_in me
+  #   them = User.create!(email: "someone@gmail.com", password: "password")
+  #   sign_in them
+  #
+  #   myshop = post :create, shop: {name: "My Shop", description: "my awesome shop", location: "my town"}, user_id: me.id, id: me.shops.last.id
+  #   theirshop = post :create, shop: {name: "Their Shop", description: "their awesome shop", location: "their town"}, user_id: them.id, id: them.shops.last.id
+  #
+  #   user_count = User.all.count
+  #   count = Shop.all.count
+  #   response = delete :destroy, id: myshop.id
+  #
+  #   expect(user_count).to eq 2
+  #   expect(response.status).to eq 302
+  #   # List.find list.id works ...
+  #   expect(shop.user.shops.count).to eq count
+  # end
 
 end
