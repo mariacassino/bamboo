@@ -16,14 +16,12 @@ RSpec.describe ItemsController, type: :controller do
   end
 
   it "lets users delete items" do
-    user = User.create! email: "test@example.com", password: "hunter2"
+    item = create :item
+    user = item.user
     sign_in user
-
-    item_create = post :create, item: {name: 'test', description: "something", price: 46},  shop_id: 1
-
+    binding.pry
     old_count = user.items.count
-    response = delete :destroy, shop_id: 1, id: user.items.last.id
-
+    response = delete :destroy, shop_id: 1, id: item.id
     expect(user.items.count).to eq old_count - 1
   end
 
