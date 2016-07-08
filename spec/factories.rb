@@ -15,14 +15,7 @@ FactoryGirl.define do
     description Faker::Beer.style
     price 5.00
     user
-
-  end
-
-
-  factory :admin, class: User do
-    email "admin@example.com"
-    password "password"
-    admin true
+    shop
   end
 
 
