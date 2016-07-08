@@ -19,13 +19,6 @@ FactoryGirl.define do
   end
 
 
-  factory :admin, class: User do
-    email "admin@example.com"
-    password "password"
-    admin true
-  end
-
-
   factory :shop do
     name "User Shop"
     description "my awesome shop"

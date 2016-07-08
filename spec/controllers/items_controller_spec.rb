@@ -19,7 +19,6 @@ RSpec.describe ItemsController, type: :controller do
     item = create :item
     user = item.user
     sign_in user
-    binding.pry
     old_count = user.items.count
     response = delete :destroy, shop_id: 1, id: item.id
     expect(user.items.count).to eq old_count - 1

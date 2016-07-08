@@ -48,24 +48,20 @@ describe ShopsController do
 
 
   it "doesn't let users edit other users' shops" do
-  user = create :user
-  sign_in user
-  shop = post :create, shop: {name: "My Shop", description: "my awesome shop",
-    location: "my town"}
-  user = shop.user
-  sign_out user
+    shop = create :shop
+    user = shop.user
+    shop = shop.user.shops.last
+    sign_out user
 
-  other = create :user
-  sign_in other
-  # theirshop = post :create, shop: {name: "Their Shop", description: "their awesome shop",
-  #   location: "their town"}
+    other = create :user
+    sign_in other
 
   update = post :update, shop: {name: "BRAND NEW SHOP", description: "even more awesome",
     location: "someplace cooler"}, id: user.shops.last.id
 
-  expect(user.shops.last.name).to eq "BRAND NEW SHOP"
-  expect(user.shops.last.description).to eq "even more awesome"
-  expect(user.shops.last.location).to eq  "someplace cooler"
+  expect(user.shops.last.name).to eq "User Shop"
+  expect(user.shops.last.description).to eq "my awesome shop"
+  expect(user.shops.last.location).to eq  "my town"
 end
 
 
