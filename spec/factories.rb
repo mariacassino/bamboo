@@ -15,7 +15,7 @@ FactoryGirl.define do
     description Faker::Beer.style
     price 5.00
     user
-
+    shop
   end
 
 

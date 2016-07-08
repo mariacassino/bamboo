@@ -20,7 +20,7 @@ RSpec.describe ItemsController, type: :controller do
     user = item.user
     sign_in user
     old_count = user.items.count
-    response = delete :destroy, shop_id: 1, id: item.id
+    response = delete :destroy, shop_id: item.shop.id, id: item.id
     expect(user.items.count).to eq old_count - 1
   end
 
