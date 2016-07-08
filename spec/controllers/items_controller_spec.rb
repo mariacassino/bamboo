@@ -3,7 +3,7 @@ require 'rails_helper'
 RSpec.describe ItemsController, type: :controller do
 
   it "lets users create items" do
-    user = User.create! email: "test@example.com", password: "hunter2"
+    user = create :user
     sign_in user
 
     old_count = user.items.count
