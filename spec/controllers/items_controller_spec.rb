@@ -43,7 +43,7 @@ RSpec.describe ItemsController, type: :controller do
   end
 
   it "disallows users to update items not owned" do
-    
+
   end
 
 end
