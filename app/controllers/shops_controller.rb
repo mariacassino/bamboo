@@ -8,7 +8,6 @@ class ShopsController < ApplicationController
 
   def show
     @shop = Shop.find(params[:id])
-    # @item = @shop.items.first
     @items = @shop.items.all
   end
 
@@ -22,7 +21,6 @@ class ShopsController < ApplicationController
     end
 
     redirect_to shop_path(shop)
-
   end
 
   def test

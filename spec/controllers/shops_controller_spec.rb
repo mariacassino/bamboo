@@ -63,7 +63,6 @@ describe ShopsController do
     response = delete :destroy, id: user.shops.last.id
 
     expect(response.status).to eq 302
-    # List.find list.id works ...
     expect(shop.user.shops.count).to eq count - 1
   end
 
@@ -121,8 +120,6 @@ describe ShopsController do
     expect(response.status).to eq 302
     expect(Shop.all.count).to eq shop_count -1
   end
-
-
 
 
 
