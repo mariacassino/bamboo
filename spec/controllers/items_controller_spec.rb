@@ -19,19 +19,20 @@ RSpec.describe ItemsController, type: :controller do
     item = create :item
     user = item.user
     sign_in user
+
     old_count = user.items.count
     response = delete :destroy, shop_id: item.shop.id, id: item.id
+
     expect(user.items.count).to eq old_count - 1
   end
 
 
   it "lets users update items" do
-    user = User.create! email: "test@example.com", password: "hunter2"
+    item = create :item
+    user = item.user
     sign_in user
 
-    item_create = post :create, item: {name: 'test', description: "something", price: 46},  shop_id: 1
-
-    update = post :update, item: {name: 'updated', description: "updated", price: 50}, shop_id: 1, id: user.items.last.id
+    update = post :update, item: {name: 'updated', description: "updated", price: 50}, shop_id: item.shop.id, id: item.id
 
     expect(user.items.count).to eq 1
     expect(user.items.last.name).to eq 'updated'
