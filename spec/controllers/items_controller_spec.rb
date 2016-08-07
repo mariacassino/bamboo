@@ -12,8 +12,8 @@ RSpec.describe ItemsController, type: :controller do
     expect(response.status).to eq 302
     expect(user.items.count).to eq old_count + 1
     expect(user.items.last.name).to eq 'test'
-
   end
+
 
   it "lets users delete items" do
     item = create :item
@@ -23,6 +23,7 @@ RSpec.describe ItemsController, type: :controller do
     response = delete :destroy, shop_id: item.shop.id, id: item.id
     expect(user.items.count).to eq old_count - 1
   end
+
 
   it "lets users update items" do
     user = User.create! email: "test@example.com", password: "hunter2"
@@ -35,8 +36,6 @@ RSpec.describe ItemsController, type: :controller do
     expect(user.items.count).to eq 1
     expect(user.items.last.name).to eq 'updated'
     expect(user.items.last.description).to eq 'updated'
-
-
   end
 
 end
