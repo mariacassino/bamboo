@@ -2,3 +2,5 @@
 
 #BAMBOO
 ##[View on Heroku](https://bamboo-shopper.herokuapp.com/)
+
+Buy from other vendors, or create a shop of your own! Devise and Pundit auths plus Stripe payment integration.
