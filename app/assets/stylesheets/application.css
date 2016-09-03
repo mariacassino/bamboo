@@ -14,7 +14,7 @@
  *= require_self
  */
  .jumbotron{
-     background: url("http://www.publicdomainpictures.net/pictures/20000/velka/bamboo-1309508851h0V.jpg") no-repeat center center;
+     background: url("bamboo.jpg") no-repeat center center;
      -webkit-background-size: 100% 100%;
      -moz-background-size: 100% 100%;
      -o-background-size: 100% 100%;
