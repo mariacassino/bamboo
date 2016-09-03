@@ -13,3 +13,30 @@
  *= require_tree .
  *= require_self
  */
+ .jumbotron{
+     background: url("http://www.publicdomainpictures.net/pictures/20000/velka/bamboo-1309508851h0V.jpg") no-repeat center center;
+     -webkit-background-size: 100% 100%;
+     -moz-background-size: 100% 100%;
+     -o-background-size: 100% 100%;
+     background-size: 100% 100%;
+ }
+
+ .jumbotron h1 {
+  font-size: 60px;
+  font-weight: 700;
+  margin: 0;
+  color: #fff;
+}
+
+.jumbotron p {
+  margin: 0 0 20px;
+  color: #fff;
+}
+
+.btn.btn-primary {
+  border-radius: 2px;
+  border: 0px;
+  color: #000000;
+  text-shadow: none;
+  background-color: #b0c4de;
+}
