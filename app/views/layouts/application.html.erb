@@ -45,7 +45,9 @@
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
         </button>
-        <a class="navbar-brand" href="/">Bamboo</a>
+        <a class="navbar-brand" href="/">Bamboo
+          <!-- <img src="<%= asset_path('logo.png') %>" /> -->
+        </a>
         <div class="navbar-collapse collapse navbar-responsive-collapse">
           <ul class="nav navbar-nav pull-right">
             <li><%= link_to "Shops", shops_path  %></li>
@@ -66,13 +68,16 @@
       <div class="row">
         <div class="col-lg-9">
           <%= bootstrap_flash %>
-          <%= yield %>
         </div>
       </div>
+    </div>
+
+      <%= yield %>
+
 
 
       <footer>
-        <p>&copy; Company 2016</p>
+        <p>&copy; Bamboo 2016</p>
       </footer>
 
     </div> <!-- /container -->
