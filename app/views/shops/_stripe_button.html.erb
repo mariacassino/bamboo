@@ -10,9 +10,14 @@
     </label>
   </article>
 
+
+
   <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
-          data-key="<%= ENV['PUBLISHABLE_KEY'] %>"
-          data-description="A month's subscription"
-          data-amount=<%= item.stripe_amount  %>
-          data-locale="auto"></script>
+    data-key="<%= ENV['PUBLISHABLE_KEY'] %>"
+    data-description=<%= item.name %>
+    data-amount=<%= item.stripe_amount %>
+    data-locale="auto">
+  </script>
+
+
 <% end %>
