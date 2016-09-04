@@ -1,6 +1,4 @@
-<%= link_to t('.new', :default => t("helpers.links.new")),
-            new_shop_path(@shop),
-            :class => 'btn btn-primary' %>
+
 <br><br>
 <% @shops.each do |shop| %>
 <div class="col-lg-3">
@@ -26,3 +24,7 @@
   </div><!--/.well -->
 </div><!--/span-->
 <% end %>
+
+<p style="padding-left:15px;">
+    <%= link_to ('Open a New Shop'), new_shop_path(@shop), :class => 'btn btn-main' %>
+</p>

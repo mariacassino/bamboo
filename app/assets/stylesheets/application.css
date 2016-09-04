@@ -33,6 +33,11 @@
   color: #fff;
 }
 
+.btn-main.btn {
+  color: #ffffff;
+  background-color: #87ceeb;
+}
+
 .btn.btn-primary {
   border-radius: 2px;
   border: 0px;
