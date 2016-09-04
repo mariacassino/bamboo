@@ -5,8 +5,8 @@
   <div class="well sidebar-nav">
     <ul class="nav nav-list">
       <li><%= link_to shop.name, shop_path(shop) %></li>
-      <li id="desc"><%= shop.description %></li>
-      <li><%= shop.location %></li>
+      <li><%= shop.description %></li>
+      <li id="location"><%= shop.location %></li>
       <% if current_user %>
         <% if policy(shop).edit? %>
           <%= link_to t('.edit', :default => t("helpers.links.edit")),
