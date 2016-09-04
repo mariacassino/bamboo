@@ -14,7 +14,7 @@
           <%= link_to t('.edit', :default => t("helpers.links.edit")),
               edit_shop_path(shop), :class => 'btn btn-default btn-xs' %>
         <% end %>
-        <% if policy(shop).edit? %>
+        <% if policy(shop).destroy? %>
           <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
               shop_path(shop),
               :method => :delete,

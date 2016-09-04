@@ -51,10 +51,10 @@ class ItemsController < ApplicationController
       redirect_to shop_item_path
     end
   end
-  
+
   def destroy
-    @shop = Shop.find(params[:shop_id])
-    @item = @shop.items.find(params[:id])
+    @shop = Shop.find(params[:id])
+    @item = @shop.items.find(params[:shop_id])
     authorize @item
     @item.destroy
     redirect_to shop_path
@@ -63,7 +63,7 @@ class ItemsController < ApplicationController
   private
 
   def approved_params
-    params.require(:item).permit(:name, :description, :price)
+    params.require(:item).permit(:name, :description, :price, :shop_id)
   end
 
 
