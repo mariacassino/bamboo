@@ -64,3 +64,11 @@ section .row img {
 .col-sm-12 {
   margin: 0 0 30px;
 }
+
+.footer p {
+    padding-left: 15px;
+}
+
+#desc ul li {
+  padding-left: 200px;
+}

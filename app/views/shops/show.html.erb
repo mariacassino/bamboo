@@ -8,9 +8,8 @@
       <%= render partial: 'shops/stripe_button', locals: { item: item, shop: @shop }%>
     </ul>
   </div><!--/.well -->
-
 <% end %>
 
-<p style="padding-left:15px;">
-    <%= link_to ('Add New Item'), new_shop_item_path(@shop), :class => 'btn btn-main' %>
-</p>
+<div class="container">
+  <%= link_to ('Add New Item'), new_shop_item_path(@shop), :class => 'btn btn-main' %>
+</div>
