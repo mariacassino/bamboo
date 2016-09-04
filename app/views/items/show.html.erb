@@ -1,9 +1,9 @@
 <div class="col-lg-3">
   <div class="well sidebar-nav">
     <ul class="nav nav-list">
-      <%= @item.name %>
-      <%= @item.description %>
-      <%= @item.price %>
+      <li><%= @item.name %></li>
+      <li><%= @item.description %></li>
+      <li><%= @item.price %></li>
       <% if current_user %>
         <% if policy(@item).edit? %>
       <%= link_to t('.edit', :default => t("helpers.links.edit")),
