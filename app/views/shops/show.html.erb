@@ -2,7 +2,7 @@
   <%= render partial: 'shops/import_form', locals: { shop: @shop } %>
   <% @items.each do |item| %>
   <div class="well">
-    <ul>
+    <ul class="list-unstyled">
       <li><%=link_to item.name, shop_item_path(@shop, item.id) %></li>
       <li><%= item.description %></li>
       <%= render partial: 'shops/stripe_button', locals: { item: item, shop: @shop }%>
@@ -11,5 +11,7 @@
 <% end %>
 
 <div class="container">
+  <div id="new-item-button">
   <%= link_to ('Add New Item'), new_shop_item_path(@shop), :class => 'btn btn-main' %>
+</div>
 </div>

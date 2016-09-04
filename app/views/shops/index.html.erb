@@ -4,7 +4,7 @@
 <div class="col-lg-12">
   <div class="well sidebar-nav">
     <ul class="nav nav-list">
-      <li><%= link_to shop.name, shop_path(shop) %></li>
+      <li><h3><%= link_to shop.name, shop_path(shop) %></h3></li>
       <li id="desc"><%= shop.description %></li>
       <li id="location"><%= shop.location %></li>
       <% if current_user %>
