@@ -39,17 +39,25 @@
 }
 
 .btn.btn-primary {
-  border-radius: 2px;
-  border: 0px;
+  border: 1px solid #000000;
   color: #000000;
   text-shadow: none;
   background-color: #b0c4de;
+  position: relative;
+}
+
+.btn.btn-primary:active {
+  top: 6px;
+  border-bottom: 0;
 }
 
 .btn.btn-primary:hover {
   color: #ffffff;
   background-color: #fbd1d5;
+  top: 2.5px;
+  border-bottom-width: 2.5px;
 }
+
 
 .navbar {
     background-color:#ffffff;
