@@ -46,6 +46,11 @@
   background-color: #b0c4de;
 }
 
+.btn.btn-primary:hover {
+  color: #ffffff;
+  background-color: #fbd1d5;
+}
+
 .navbar {
     background-color:#ffffff;
     color:#ffffff;
