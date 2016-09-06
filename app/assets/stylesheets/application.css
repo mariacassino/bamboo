@@ -96,9 +96,6 @@ section .row img {
     background: #ffffff;
 }
 
-body {
-    background-image: url("leftrightgradient.jpg");
-}
 
 body {
     background-color: rgb(249, 249, 249);
