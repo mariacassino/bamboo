@@ -13,7 +13,7 @@
  *= require_tree .
  *= require_self
  */
- .jumbotron{
+.jumbotron{
      background: url("bamboo.jpg") no-repeat center center;
      -webkit-background-size: 100% 100%;
      -moz-background-size: 100% 100%;
@@ -54,8 +54,6 @@
 .btn.btn-primary:hover {
   color: #ffffff;
   background-color: #fbd1d5;
-  top: 2.5px;
-  border-bottom-width: 2.5px;
 }
 
 
