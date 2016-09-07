@@ -5,6 +5,7 @@ class Item < ActiveRecord::Base
   has_attached_file :image, styles: { medium: "300x300>", thumb: "100x100>" },
     default_url: "/images/:style/missing.png",
     storage: :s3,
+    bucket: "bambooapp",
     s3_credentials: Proc.new{|a| a.instance.s3_credentials }
   validates_attachment_content_type :image, content_type: /\Aimage\/.*\z/
 
