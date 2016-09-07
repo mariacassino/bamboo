@@ -3,7 +3,7 @@ class Item < ActiveRecord::Base
   belongs_to :seller
   belongs_to :user
   has_attached_file :image, styles: { medium: "300x300>", thumb: "100x100>" },
-    :default_url => ActionController::Base.helpers.asset_path('missing.png'),
+    :default_url => 'missing_:style.png',
     storage: :s3,
     bucket: "bambooapp",
     :s3_host_name => 's3-us-west-2.amazonaws.com',
