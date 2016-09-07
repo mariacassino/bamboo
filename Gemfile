@@ -21,6 +21,9 @@ gem 'figaro'
 gem 'pony'
 gem "paperclip", git: "git://github.com/thoughtbot/paperclip.git"
 gem 'aws-sdk', '~> 2.3'
+gem 'rollbar'
+gem 'oj', '~> 2.12.14'
+
 
 
 group :development, :test do
