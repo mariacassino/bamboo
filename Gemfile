@@ -20,6 +20,7 @@ gem 'stripe'
 gem 'figaro'
 gem 'pony'
 gem "paperclip", git: "git://github.com/thoughtbot/paperclip.git"
+gem 'aws-sdk', '~> 2.3'
 
 
 group :development, :test do
