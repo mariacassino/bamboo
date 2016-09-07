@@ -21,20 +21,13 @@ ActiveRecord::Schema.define(version: 20160907000426) do
     t.text     "description"
     t.datetime "created_at",                                 null: false
     t.datetime "updated_at",                                 null: false
-    t.integer  "shop_id"
     t.decimal  "price",              precision: 8, scale: 2
+    t.integer  "shop_id"
     t.integer  "user_id"
     t.string   "image_file_name"
     t.string   "image_content_type"
     t.integer  "image_file_size"
     t.datetime "image_updated_at"
-  end
-
-  create_table "sellers", force: :cascade do |t|
-    t.integer  "user_id"
-    t.integer  "shop_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
   end
 
   create_table "shops", force: :cascade do |t|
