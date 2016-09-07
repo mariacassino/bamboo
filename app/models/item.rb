@@ -6,6 +6,7 @@ class Item < ActiveRecord::Base
     default_url: "/images/:style/missing.png",
     storage: :s3,
     bucket: "bambooapp",
+    :s3_host_name => 's3-us-west-2.amazonaws.com',
     s3_credentials: Proc.new{|a| a.instance.s3_credentials }
   validates_attachment_content_type :image, content_type: /\Aimage\/.*\z/
 
