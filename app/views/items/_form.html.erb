@@ -1,7 +1,5 @@
 
-
-
-<%= form_for [@shop, @item], :html => { :class => "form-horizontal item" } do |f| %>
+<%= form_for [@shop, @item], multipart: true, :html => { :class => "form-horizontal item" } do |f| %>
 
   <% if @item.errors.any? %>
     <div id="error_expl" class="panel panel-danger">
