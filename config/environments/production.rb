@@ -90,7 +90,7 @@ Rails.application.configure do
   config.paperclip_defaults = {
     :storage => :s3,
     :s3_credentials => {
-      :s3_region => 'us-east-1',
+      :s3_region => 'us-west-2',
       :bucket => 'bambooapp',
       :access_key_id => ENV['AWS_ACCESS_KEY_ID'],
       :secret_access_key => ENV['AWS_SECRET_ACCESS_KEY']
