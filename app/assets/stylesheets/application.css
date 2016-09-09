@@ -38,6 +38,11 @@
   background-color: rgb(39, 171, 164);
 }
 
+.btn-main.btn:hover {
+  color: #ffffff;
+  background-color: rgb(3, 102, 135);
+}
+
 .btn.btn-primary {
   border: 1px solid #000000;
   color: #000000;
@@ -53,7 +58,7 @@
 
 .btn.btn-primary:hover {
   color: #ffffff;
-  background-color: #fbd1d5;
+  background-color: rgb(109, 133, 140);
 }
 
 
