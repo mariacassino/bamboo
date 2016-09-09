@@ -102,3 +102,8 @@ section .row img {
 body {
     background-color: rgb(249, 249, 249);
 }
+
+.glyphicon {
+   font-family:'Glyphicons Halflings' !important;
+   // more css comes along here
+}
