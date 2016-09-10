@@ -8,6 +8,8 @@ class ItemsController < ApplicationController
   def show
     @shop = Shop.find(params[:shop_id])
     @item = @shop.items.find(params[:id])
+    @reviews = @item.reviews.all
+    @review = Review.new
   end
 
   def new
@@ -61,8 +63,26 @@ class ItemsController < ApplicationController
     redirect_to shop_path
   end
 
-  def review
-    @review = Review.find(params[])
+  def create_review
+    @shop = Shop.find(params[:shop_id])
+    @item = @shop.items.find(params[:id])
+    @review = @item.review.new(review_params)
+    @review.user_id = current_user.id
+    @review.create!
+    respond_to do |format|
+      if @review.save
+        format.html { redirect_to @review, notice: 'Person was successfully created.' }
+        format.json { render action: 'show', status: :created, location: @review }
+        # added:
+        format.js   { render action: 'show', status: :created, location: @review }
+      else
+        # render :new
+        format.html { render action: 'new' }
+        format.json { render json: @review.errors, status: :unprocessable_entity }
+        # added:
+        format.js   { render json: @review.errors, status: :unprocessable_entity }
+      end
+    end
   end
 
   private

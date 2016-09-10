@@ -1,48 +1,47 @@
-// Create a "close" button and append it to each list item
-var myNodelist = document.getElementsByTagName("LI");
-var i;
-for (i = 0; i < myNodelist.length; i++) {
-  var span = document.createElement("SPAN");
-  var txt = document.createTextNode("\u00D7");
-  span.className = "close";
-  span.appendChild(txt);
-  myNodelist[i].appendChild(span);
-}
+$(document).ready(function(){
 
-// Click on a close button to hide the current list item
-var close = document.getElementsByClassName("close");
-var i;
-for (i = 0; i < close.length; i++) {
-  close[i].onclick = function() {
-    var div = this.parentElement;
-    div.style.display = "none";
+  $(document).bind('ajaxError', 'form#new_review', function(event, jqxhr, settings, exception){
+
+    // note: jqxhr.responseJSON undefined, parsing responseText instead
+    $(event.data).render_form_errors( $.parseJSON(jqxhr.responseText) );
+
+  });
+
+});
+
+(function($) {
+
+  $.fn.modal_success = function(){
+    // close modal
+    this.modal('hide');
+
+    // clear form input elements
+    // todo/note: handle textarea, select, etc
+    this.find('form input[type="text"]').val('');
+
+    // clear error state
+    this.clear_previous_errors();
+  };
+
+  $.fn.render_form_errors = function(errors){
+
+    $form = this;
+    this.clear_previous_errors();
+    model = this.data('model');
+
+    // show error messages in input form-group help-block
+    $.each(errors, function(field, messages){
+      $input = $('input[name="' + model + '[' + field + ']"]');
+      $input.closest('.form-group').addClass('has-error').find('.help-block').html( messages.join(' & ') );
+    });
+
+  };
+
+  $.fn.clear_previous_errors = function(){
+    $('.form-group.has-error', this).each(function(){
+      $('.help-block', $(this)).html('');
+      $(this).removeClass('has-error');
+    });
   }
-}
 
-
-// Create a new list item when clicking on the "Add" button
-function newElement() {
-  var li = document.createElement("li");
-  var inputValue = document.getElementById("myInput").value;
-  var t = document.createTextNode(inputValue);
-  li.appendChild(t);
-  if (inputValue === '') {
-    alert("You must write something!");
-  } else {
-    document.getElementById("myUL").appendChild(li);
-  }
-  document.getElementById("myInput").value = "";
-
-  var span = document.createElement("SPAN");
-  var txt = document.createTextNode("\u00D7");
-  span.className = "close";
-  span.appendChild(txt);
-  li.appendChild(span);
-
-  for (i = 0; i < close.length; i++) {
-    close[i].onclick = function() {
-      var div = this.parentElement;
-      div.style.display = "none";
-    }
-  }
-}
+}(jQuery));

@@ -25,15 +25,52 @@
 
 
 
-<div id="myDIV" class="header">
-  <h2>Reviews</h2>
-  <input type="text" id="myInput" placeholder="Tell us what you think!...">
-  <span onclick="newElement()" class="addBtn">Add Review</span>
+<%= @reviews %>
+
+
+<!--trying out AJAX -->
+<table class='table' id='people_table'>
+  <thead>
+    <tr>
+      <th>Review</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @reviews.each do |review| %>
+      <%# Render table row partial for each review object %>
+      <%= render partial: 'table_row', locals: {review: review} %>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%# Added Bootstrap data modal attribute %>
+<%= link_to 'New review', '#new_review_modal', 'data-toggle' => 'modal' %>
+
+<%# Bootstrap modal markup. @see: http://getbootstrap.com/javascript/#modals %>
+<div class="modal fade" id="new_review_modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <h4 class="modal-title" id="myModalLabel">Create new review</h4>
+      </div>
+      <div class="modal-body">
+        <%# Render the new review form (passing modal => true to enable remote => true) %>
+        <%= render 'review_form', modal: true %>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
 </div>
-
-<ul id="myUL">
-
-</ul>
+<!--end AJAX -->
 
 
 
