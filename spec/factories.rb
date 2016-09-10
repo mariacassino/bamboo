@@ -1,4 +1,7 @@
 FactoryGirl.define do
+  factory :review do
+    review_text "MyText"
+  end
   factory :user do
     sequence(:email) { |n| "email@example#{n}.com" }
     password "hunter2"

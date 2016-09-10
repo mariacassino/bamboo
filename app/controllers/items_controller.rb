@@ -61,6 +61,10 @@ class ItemsController < ApplicationController
     redirect_to shop_path
   end
 
+  def review
+    @review = Review.find(params[])
+  end
+
   private
 
   def approved_params

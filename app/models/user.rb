@@ -6,6 +6,7 @@ class User < ActiveRecord::Base
 
          has_many :shops
          has_many :items
+         has_many :reviews 
 
     def admin?
       self.admin == true
