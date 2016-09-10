@@ -102,3 +102,56 @@ section .row img {
 body {
     background-color: rgb(249, 249, 249);
 }
+
+.invalid {
+  border: 2px solid red;
+}
+
+.incomplete .glyphicon-ok {
+  display: none;
+}
+
+/*  "Add" Review button */
+.addBtn {
+    padding: 10px;
+    width: 25%;
+    background: #d9d9d9;
+    color: #555;
+    float: left;
+    text-align: center;
+    font-size: 16px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.addBtn:hover {
+    background-color: #bbb;
+}
+
+/* Review box header */
+#myDIV {
+    background-color: #ffffff;
+    padding: 30px 40px;
+    color: white;
+    text-align: center;
+}
+
+/* Clear floats after the header */
+#myDIV:after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+#myInput {
+    border: 1px solid #000000;
+    width: 75%;
+    padding: 10px;
+    float: left;
+    font-size: 16px;
+    color: black;
+}
+
+h2 {
+  color: black;
+}

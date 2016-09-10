@@ -3,6 +3,8 @@ Rails.application.routes.draw do
 
   root 'home#show'
 
+  
+
   resources :home
 
   resources :shops do
