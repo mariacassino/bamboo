@@ -1,6 +1,7 @@
 class ChargesController < ApplicationController
 
   def new
+    @amount = @item.stripe_amount.to_i
   end
 
   def create
@@ -25,7 +26,7 @@ class ChargesController < ApplicationController
     )
 
     # email customer, charge
-    charge 
+    charge
 
     rescue Stripe::CardError => e
       flash[:error] = e.message

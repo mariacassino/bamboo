@@ -14,7 +14,7 @@
 
   <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
           data-key="<%= ENV['PUBLISHABLE_KEY'] %>"
-          data-description="A month's subscription"
-          data-amount="50"
+          data-description="payment"
+          data-amount= "<%= @amount %>"
           data-locale="auto"></script>
 <% end %>
