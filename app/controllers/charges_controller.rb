@@ -24,7 +24,8 @@ class ChargesController < ApplicationController
     :receipt_email => customer.email
     )
 
-    email customer, charge
+    # email customer, charge
+    charge 
 
     rescue Stripe::CardError => e
       flash[:error] = e.message
@@ -36,27 +37,27 @@ class ChargesController < ApplicationController
   end
 
 
-  def email customer, charge
-    # TODO Create layout and dynamic content
-    Pony.options = {
-      :via => :smtp,
-      :via_options => {
-        :address => 'smtp.sendgrid.net',
-        :port => '587',
-        :domain => 'bamboo-shopper.herokuapp.com',
-        :user_name => ENV['SENDGRID_USERNAME'],
-        :password => ENV['SENDGRID_PASSWORD'],
-        :authentication => :plain,
-        :enable_starttls_auto => true
-      }
-    }
-
-
-    Pony.mail :to => customer.email,
-    :from => "no-reply@bamboo-shopper.herokuapp.com",
-    :headers => { 'Content-Type' => 'text/html' },
-    :subject => "Receipt",
-    :body => "Thank you for your purchase. You have purchased a #{charge.metadata.item} for $#{charge.amount / 100.00}"
-  end
+  # def email customer, charge
+  #   # TODO Create layout and dynamic content
+  #   Pony.options = {
+  #     :via => :smtp,
+  #     :via_options => {
+  #       :address => 'smtp.sendgrid.net',
+  #       :port => '587',
+  #       :domain => 'bamboo-shopper.herokuapp.com',
+  #       :user_name => ENV['SENDGRID_USERNAME'],
+  #       :password => ENV['SENDGRID_PASSWORD'],
+  #       :authentication => :plain,
+  #       :enable_starttls_auto => true
+  #     }
+  #   }
+  #
+  #
+  #   Pony.mail :to => customer.email,
+  #   :from => "no-reply@bamboo-shopper.herokuapp.com",
+  #   :headers => { 'Content-Type' => 'text/html' },
+  #   :subject => "Receipt",
+  #   :body => "Thank you for your purchase. You have purchased a #{charge.metadata.item} for $#{charge.amount / 100.00}"
+  # end
 
 end
