@@ -4,7 +4,7 @@ class ChargesController < ApplicationController
   end
 
   def create
-    @shop = Shop.find(params[:id])
+    # @shop = Shop.find(params[:id])
     @item = Item.find params[:item_id]
     @amount = @item.stripe_amount.to_i #This is $5
     customer = Stripe::Customer.create(
@@ -29,8 +29,8 @@ class ChargesController < ApplicationController
     rescue Stripe::CardError => e
       flash[:error] = e.message
 
-      # redirect_to new_charge_path
-      redirect_to shop_path(@shop)
+      redirect_to new_charge_path
+      # redirect_to shop_path(@shop)
 
   end
 
