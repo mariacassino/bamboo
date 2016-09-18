@@ -43,7 +43,7 @@ class ChargesController < ApplicationController
       :via_options => {
         :address => 'smtp.sendgrid.net',
         :port => '587',
-        :domain => 'shop-bamboo.herokuapp.com',
+        :domain => 'bamboo-shopper.herokuapp.com',
         :user_name => ENV['SENDGRID_USERNAME'],
         :password => ENV['SENDGRID_PASSWORD'],
         :authentication => :plain,
@@ -53,7 +53,7 @@ class ChargesController < ApplicationController
 
 
     Pony.mail :to => customer.email,
-    :from => "no-reply@shop-bamboo.herokuapp.com",
+    :from => "no-reply@bamboo-shopper.herokuapp.com",
     :headers => { 'Content-Type' => 'text/html' },
     :subject => "Receipt",
     :body => "Thank you for your purchase. You have purchased a #{charge.metadata.item} for $#{charge.amount / 100.00}"
