@@ -4,6 +4,9 @@
   <%= render partial: 'shops/import_form', locals: { shop: @shop } %>
   <% end %>
 <% end %>
+<h3>Random Item:</h3>
+<% image_tag random.image.url(:thumb) %>
+
   <% @items.each do |item| %>
     <div class="well">
       <ul class="list-unstyled">
