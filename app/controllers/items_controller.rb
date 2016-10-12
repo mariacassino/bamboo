@@ -46,7 +46,6 @@ class ItemsController < ApplicationController
     authorize @item
     if @item.update(approved_params)
       flash[:notice] = "Success!"
-      # redirect_to shop_item_path
       redirect_to shop_path(@shop)
     else
       redirect_to shop_item_path
