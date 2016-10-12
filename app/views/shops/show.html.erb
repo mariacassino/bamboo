@@ -5,7 +5,7 @@
   <% end %>
 <% end %>
 
-<% if @items %>
+<% if @random %>
 
 <h3>Random Item:</h3>
 <div class="well">
@@ -18,24 +18,27 @@
   <h3><%= link_to "Click here to be whisked away to another randomly-selected item!", shop_items_random_path(@shop) %></h3>
 </div>
 
-<h3>All Items:</h3>
-  <% @items.each do |item| %>
-    <div class="well">
-      <ul class="list-unstyled">
-        <%= image_tag item.image.url(:thumb) %>
-        <li><%=link_to item.name, shop_item_path(@shop, item.id) %></li>
-        <li><%= item.description %></li>
-            <%= render partial: 'shops/stripe_button', locals: { item: item, shop: @shop }%>
-      </ul>
-    </div><!--/.well -->
-  <% end %>
-
-<% if current_user %>
-  <% if policy(@shop).update? %>
-    <p style="padding-left:15px;">
-    <%= link_to ('Add New Item'), new_shop_item_path(@shop), :class => 'btn btn-main' %>
-    </p>
-  <% end %>
 <% end %>
 
+<% if @items %>
+  <h3>All Items:</h3>
+    <% @items.each do |item| %>
+      <div class="well">
+        <ul class="list-unstyled">
+          <%= image_tag item.image.url(:thumb) %>
+          <li><%=link_to item.name, shop_item_path(@shop, item.id) %></li>
+          <li><%= item.description %></li>
+              <%= render partial: 'shops/stripe_button', locals: { item: item, shop: @shop }%>
+        </ul>
+      </div><!--/.well -->
+<% end %>
+
+<% if current_user %>
+    <% if policy(@shop).update? %>
+      <p style="padding-left:15px;">
+      <%= link_to ('Add New Item'), new_shop_item_path(@shop), :class => 'btn btn-main' %>
+      </p>
+    <% end %>
+  <% end %>
+  
 <% end %>
