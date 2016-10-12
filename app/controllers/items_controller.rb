@@ -68,9 +68,9 @@ class ItemsController < ApplicationController
   def new_sale
     @shop = Shop.find(params[:shop_id])
     @item = @shop.items.find(params[:shop_id])
+    @item.on_sale = true
+    @item.sale_start = Time.now.strftime("%A, %B %e, %Y %l:%M %P %Z")
     if @item.save
-      @item.on_sale = true
-      # @item.sale_start = Time.now.strftime("%A, %B %e, %Y %l:%M %P %Z")
       flash[:notice] = "Success!"
     else
       render :new
