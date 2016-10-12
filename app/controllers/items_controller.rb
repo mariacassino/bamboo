@@ -62,7 +62,6 @@ class ItemsController < ApplicationController
 
   def random
     @shop = Shop.find(params[:shop_id])
-    @item = @shop.items.find(params[:shop_id])
     @random = @shop.items.all.sample
   end
 
