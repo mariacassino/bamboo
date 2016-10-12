@@ -13,6 +13,10 @@ class ItemPolicy < ApplicationPolicy
     show?
   end
 
+  # def new_sale?
+  #   create?
+  # end
+
   def new?
     create?
   end
