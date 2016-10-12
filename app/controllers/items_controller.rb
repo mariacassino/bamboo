@@ -61,6 +61,12 @@ class ItemsController < ApplicationController
     redirect_to shop_path
   end
 
+  def random
+    @shop = Shop.find(params[:shop_id])
+    @item = @shop.items.find(params[:shop_id])
+    @random = @shop.items.all.sample
+  end
+
   private
 
   def approved_params

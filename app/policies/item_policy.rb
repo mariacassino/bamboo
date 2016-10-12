@@ -9,6 +9,10 @@ class ItemPolicy < ApplicationPolicy
     true
   end
 
+  def random?
+    show?
+  end
+
   def new?
     create?
   end

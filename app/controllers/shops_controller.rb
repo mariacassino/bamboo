@@ -14,7 +14,6 @@ class ShopsController < ApplicationController
 
   def import
     file = params[:file]
-    # FIXME Need to add PUNDIT permission
     shop = Shop.find(params[:shop_id])
 
     CSV.foreach(file.path, headers: true) do |row|

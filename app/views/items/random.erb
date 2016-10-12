@@ -1,0 +1,9 @@
+<h3>Here is your random item! A friendly suggestion if you cannot decide.</h3>
+<div class="well">
+  <ul class="list-unstyled">
+    <%= image_tag @random.image.url(:thumb) %>
+    <li><%=link_to @random.name, shop_item_path(@shop, @random.id) %></li>
+    <li><%= @random.description %></li>
+    <%= render partial: 'shops/stripe_button', locals: { item: @random, shop: @shop }%>
+  </ul>
+</div>
