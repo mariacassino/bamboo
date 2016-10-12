@@ -65,10 +65,22 @@ class ItemsController < ApplicationController
     @random = @shop.items.all.sample
   end
 
+  def new_sale
+    @shop = Shop.find(params[:shop_id])
+    @item = @shop.items.find(params[:shop_id])
+    if @item.save
+      @item.on_sale = true
+      # @item.sale_start = Time.now.strftime("%A, %B %e, %Y %l:%M %P %Z")
+      flash[:notice] = "Success!"
+    else
+      render :new
+    end
+  end
+
   private
 
   def approved_params
-    params.require(:item).permit(:name, :description, :price, :shop_id, :image)
+    params.require(:item).permit(:name, :description, :price, :shop_id, :image, :sale_price, :sale_length)
   end
 
 

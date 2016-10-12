@@ -25,6 +25,14 @@
     <%=f.error_span(:sale_price) %>
   </div>
 
+  <div class="form-group">
+    <%= f.label :sale_length, 'Length of Sale (specify a number of days)', :class => 'control-label col-lg-2' %>
+    <div class="col-lg-6">
+      <%= f.text_field :sale_length, :class => 'form-control' %>
+    </div>
+    <%=f.error_span(:sale_length) %>
+  </div>
+
 
 
   <div class="form-group">
