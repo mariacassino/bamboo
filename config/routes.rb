@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   resources :home
 
   resources :shops do
+    get "/items/random", to: "items#random" 
    resources :items do
      resources :charges
    end
