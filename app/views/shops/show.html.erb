@@ -8,9 +8,9 @@
 <div class="well">
   <ul class="list-unstyled">
     <%= image_tag @random.image.url(:thumb) %>
-    <li><%=link_to item.name, shop_item_path(@shop, item.id) %></li>
-    <li><%= item.description %></li>
-    <%= render partial: 'shops/stripe_button', locals: { item: item, shop: @shop }%>
+    <li><%=link_to @random.name, shop_item_path(@shop, @random.id) %></li>
+    <li><%= @random.description %></li>
+    <%= render partial: 'shops/stripe_button', locals: { item: @random, shop: @shop }%>
   </ul>
 </div>
 
