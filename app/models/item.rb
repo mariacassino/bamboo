@@ -10,7 +10,8 @@ class Item < ActiveRecord::Base
   end
 
   def sale_end_date
-    (sale_start + sale_length.days)
+    (sale_start + sale_length.days).strftime("%A, %B %e, %Y %l:%M %P %Z")
   end
+
 
 end

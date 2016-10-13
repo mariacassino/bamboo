@@ -1,6 +1,0 @@
-class SalesController < ApplicationController
-
-
-
-
-end
