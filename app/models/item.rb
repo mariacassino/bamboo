@@ -9,4 +9,8 @@ class Item < ActiveRecord::Base
     price.to_f * 100
   end
 
+  def sale_end_date
+    (sale_start + sale_length.days)
+  end
+
 end

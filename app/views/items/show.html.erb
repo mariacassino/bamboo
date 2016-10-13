@@ -5,6 +5,13 @@
       <li><%= @item.name %></li>
       <li><%= @item.description %></li>
       <li><%= @item.price %></li>
+
+
+      <% if @item.on_sale = true %>
+        <li><%= "Sale Price: " + @item.sale_price.to_s %></li>
+        <li><%= "Sale Ends: " + @item.sale_end_date.strftime("%A, %B %e, %Y %l:%M %P %Z") %></li>
+      <% end %>
+
       <% if current_user %>
         <% if policy(@item).edit? %>
       <%= link_to t('.edit', :default => t("helpers.links.edit")),
