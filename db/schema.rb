@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161012210216) do
+ActiveRecord::Schema.define(version: 20161013015136) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -30,7 +30,7 @@ ActiveRecord::Schema.define(version: 20161012210216) do
     t.datetime "image_updated_at"
     t.boolean  "on_sale",                                    default: false
     t.decimal  "sale_price",         precision: 8, scale: 2
-    t.integer  "sale_length"
+    t.integer  "sale_length",                                default: 0
     t.datetime "sale_start"
   end
 

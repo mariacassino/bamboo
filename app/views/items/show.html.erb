@@ -9,9 +9,7 @@
 
       <% if @item.on_sale = true %>
         <li><%= "Sale Price: " + @item.sale_price.to_s %></li>
-        <li><%= "Sale Ends: " + @item.sale_end_date %></li>
-      <% else %>
-        <%= " " %>
+        <li><%= "Sale Ends: " +  (@item.sale_start + @item.sale_length.days).strftime("%A, %B %e, %Y %l:%M %P %Z").to_s %></li>
       <% end %>
 
       <% if current_user %>
