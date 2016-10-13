@@ -23,7 +23,14 @@
           :method => :delete,
           :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
           :class => 'btn btn-xs btn-danger' %>
-      <h3><%= link_to "Put this item on sale to get it flying off the shelves!", shop_item_new_sale_path(@shop, @item) %></h3>
+
+          <% if @item.on_sale = false %>
+            <h3><%= link_to "Put this item on sale to get it flying off the shelves!", shop_item_new_sale_path(@shop, @item) %></h3>
+          <% else %>
+          <p><%= link_to "Edit Sale Info", shop_item_new_sale_path(@shop, @item) %></p>
+
+
+          <% end %>
 
         <% end %>
       <% end %>
