@@ -10,11 +10,13 @@
       <% if @item.on_sale = true %>
         <li><%= "Sale Price: " + @item.sale_price.to_s %></li>
         <li><%= "Sale Ends: " + @item.sale_end_date %></li>
+      <% else %>
+        <%= " " %>
       <% end %>
 
       <% if current_user %>
         <% if policy(@item).edit? %>
-      <%= link_to t('.edit', :default => t("helpers.links.edit")),
+          <%= link_to t('.edit', :default => t("helpers.links.edit")),
           edit_shop_item_path(@item, @shop), :class => 'btn btn-default btn-xs' %>
         <% end %>
         <% if policy(@item).destroy? %>
@@ -23,17 +25,15 @@
           :method => :delete,
           :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
           :class => 'btn btn-xs btn-danger' %>
-
-          <% if @item.on_sale = false %>
-            <h3><%= link_to "Put this item on sale to get it flying off the shelves!", shop_item_new_sale_path(@shop, @item) %></h3>
-          <% else %>
-          <p><%= link_to "Edit Sale Info", shop_item_new_sale_path(@shop, @item) %></p>
-
-
-          <% end %>
-
         <% end %>
       <% end %>
+
+      <% if @item.on_sale = false %>
+        <h3><%= link_to "Put this item on sale to get it flying off the shelves!", shop_item_new_sale_path(@shop, @item) %></h3>
+      <% else %>
+        <h3><%= link_to "Edit Sale Info", shop_item_new_sale_path(@shop, @item) %></h3>
+      <% end %>
+
     </ul>
   </div><!--/.well -->
 </div><!--/span-->
