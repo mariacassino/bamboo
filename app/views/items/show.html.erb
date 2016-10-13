@@ -7,7 +7,7 @@
       <li><%= @item.price %></li>
 
 
-      <% unless @item.on_sale = false %>
+      <% if @item.on_sale = true %>
         <li><%= "Sale Price: " + @item.sale_price.to_s %></li>
         <li><%= "Sale Ends: " + @end_date.to_s %></li>
       <% end %>
@@ -26,11 +26,15 @@
         <% end %>
       <% end %>
 
-      <% if @item.on_sale = false %>
-        <h3><%= link_to "Put this item on sale to get it flying off the shelves!", shop_item_new_sale_path(@shop, @item) %></h3>
-      <% else %>
-        <h3><%= link_to "Edit Sale Info", shop_item_new_sale_path(@shop, @item) %></h3>
+    <% if current_user %>
+      <% if policy(@item).edit? %>
+        <% if @item.on_sale = false %>
+          <h3><%= link_to "Put this item on sale to get it flying off the shelves!", shop_item_new_sale_path(@shop, @item) %></h3>
+        <% else %>
+          <h3><%= link_to "Edit Sale Info", shop_item_new_sale_path(@shop, @item) %></h3>
+        <% end %>
       <% end %>
+    <% end %>
 
     </ul>
   </div><!--/.well -->
