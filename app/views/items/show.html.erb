@@ -1,17 +1,20 @@
 <div class="col-lg-3">
   <div class="well sidebar-nav">
     <ul class="nav nav-list">
+
+      <!--basic item info-->
       <%= image_tag @item.image.url(:medium) %>
       <li><%= @item.name %></li>
       <li><%= @item.description %></li>
       <li><%= @item.price %></li>
 
-
+      <!--item sale info-->
       <% if @item.on_sale = true %>
         <li><%= "Sale Price: " + @item.sale_price.to_s %></li>
         <li><%= "Sale Ends: " + @end_date.to_s %></li>
       <% end %>
 
+      <!--edit/delete item buttons-->
       <% if current_user %>
         <% if policy(@item).edit? %>
           <%= link_to t('.edit', :default => t("helpers.links.edit")),
@@ -26,6 +29,7 @@
         <% end %>
       <% end %>
 
+      <!--run a sale or edit sale info-->
     <% if current_user %>
       <% if policy(@item).edit? %>
         <% if @item.on_sale = false %>
@@ -42,7 +46,7 @@
 
 
 
-
+  <!--reviews-->
 <div id="myDIV" class="header">
   <h2>Reviews</h2>
   <input type="text" id="myInput" placeholder="Tell us what you think!...">
@@ -55,7 +59,7 @@
 
 
 
-
+  <!--navigation button returns to shop-->
 <p style="padding-left:15px;">
   <%= link_to shop_path(@shop), class: "btn btn-default btn-sm" do %>
     <span class="glyphicon glyphicon-arrow-left"></span> Return to Shop

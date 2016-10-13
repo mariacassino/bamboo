@@ -1,6 +1,7 @@
 
 <%= form_for [@shop, @item], multipart: true, :html => { :class => "form-horizontal item" } do |f| %>
 
+    <!--error rescue-->
   <% if @item.errors.any? %>
     <div id="error_expl" class="panel panel-danger">
       <div class="panel-heading">
@@ -16,9 +17,11 @@
     </div>
   <% end %>
 
+
+  <!--photo selector-->
   <%= f.file_field :image %>
 
-
+  <!--form for item-->
   <div class="form-group">
     <%= f.label :name, :class => 'control-label col-lg-2' %>
     <div class="col-lg-6">
@@ -43,7 +46,7 @@
     <%=f.error_span(:price) %>
   </div>
 
-
+  <!--submit/cancel buttons for item form-->
   <div class="form-group">
     <div class="col-lg-offset-2 col-lg-10">
       <%= f.submit nil, :class => 'btn btn-primary' %>
