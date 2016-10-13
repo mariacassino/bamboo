@@ -8,6 +8,7 @@ class ItemsController < ApplicationController
   def show
     @shop = Shop.find(params[:shop_id])
     @item = @shop.items.find(params[:id])
+    @end_date = (@item.sale_start + @item.sale_length.days).strftime("%A, %B %e, %Y %l:%M %P %Z")
   end
 
   def new
@@ -77,17 +78,19 @@ class ItemsController < ApplicationController
     end
   end
 
+  # def sale_end_date
+  #   @shop = Shop.find(params[:shop_id])
+  #   @item = @shop.items.find(params[:id])
+  #   (@item.sale_start + @item.sale_length.days).strftime("%A, %B %e, %Y %l:%M %P %Z")
+  # end
+
   private
 
   def approved_params
     params.require(:item).permit(:name, :description, :price, :shop_id, :image, :sale_price, :sale_length)
   end
 
-  def sale_end_date
-    @shop = Shop.find(params[:shop_id])
-    @item = @shop.items.find(params[:id])
-    @end = (@item.sale_start + @item.sale_length.days).strftime("%A, %B %e, %Y %l:%M %P %Z")
-  end
+
 
 
 end
