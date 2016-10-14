@@ -82,8 +82,8 @@ class ItemsController < ApplicationController
   end
 
   def cancel_sale
-    @shop = Shop.find(params[:id])
-    @item = @shop.items.find(params[:shop_id])
+    @shop = Shop.find(params[:shop_id])
+    @item = @shop.items.find(params[:item_id])
     @item.on_sale = false
     if @item.save
       redirect_to shop_item_sale_cancelled_path
@@ -93,8 +93,8 @@ class ItemsController < ApplicationController
   end
 
   def sale_cancelled
-    @shop = Shop.find(params[:id])
-    @item = @shop.items.find(params[:shop_id])
+    @shop = Shop.find(params[:shop_id])
+    @item = @shop.items.find(params[:item_id])
   end
 
 

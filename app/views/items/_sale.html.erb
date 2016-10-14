@@ -41,7 +41,7 @@
       <%= f.submit nil, :class => 'btn btn-primary' %>
       <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
                 shop_path(@shop), :class => 'btn btn-default' %>
-      <%= link_to ('Cancel Sale'), shop_item_cancel_sale_path(@shop, @item), :class => 'btn btn-default btn-danger' %>
+      <%= link_to ('Cancel Sale'), shop_item_cancel_sale_path(@shop, @item), :method => 'update', :class => 'btn btn-default btn-danger' %>
 
     </div>
   </div>
