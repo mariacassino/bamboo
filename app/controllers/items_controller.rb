@@ -85,6 +85,7 @@ class ItemsController < ApplicationController
     @shop = Shop.find(params[:shop_id])
     @item = @shop.items.find(params[:item_id])
     @item.on_sale = false
+    @item.sale_price = @item.price 
     if @item.save
       redirect_to shop_item_sale_cancelled_path
     else
