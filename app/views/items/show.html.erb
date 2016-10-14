@@ -6,11 +6,11 @@
       <%= image_tag @item.image.url(:medium) %>
       <li><%= @item.name %></li>
       <li><%= @item.description %></li>
-      <li><%= @item.price %></li>
+      <li><%= number_to_currency(@item.price) %></li>
 
       <!--item sale info-->
       <% if @item.on_sale = true %>
-        <li><%= "Sale Price: " + @item.sale_price.to_s %></li>
+        <li><%= "Sale Price: " + number_to_currency(@item.sale_price.to_s) %></li>
         <li><%= "Sale Ends: " + @end_date.to_s %></li>
       <% end %>
 

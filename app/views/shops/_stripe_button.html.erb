@@ -7,7 +7,7 @@
     <% end %>
     <label class="amount">
       <span><%= item.on_sale ? 'Sale Price' : 'Amount' %>
-        <%= item.on_sale ? item.sale_price : item.price %></span>
+        <%= item.on_sale ? number_to_currency(item.sale_price) : number_to_currency(item.price) %></span>
     </label>
   </article>
 
