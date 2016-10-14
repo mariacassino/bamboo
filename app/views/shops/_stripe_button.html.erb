@@ -6,7 +6,7 @@
       </div>
     <% end %>
     <label class="amount">
-      <span>Amount: <%= item.price %></span>
+      <span>Amount: <%= @amount %></span>
     </label>
   </article>
 
@@ -15,7 +15,7 @@
   <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
     data-key="<%= ENV['PUBLISHABLE_KEY'] %>"
     data-description=<%= item.name %>
-    data-amount=<%= item.stripe_amount %>
+    data-amount=<%= @amount %>
     data-locale="auto">
   </script>
 
