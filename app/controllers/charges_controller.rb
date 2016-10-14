@@ -6,8 +6,8 @@ class ChargesController < ApplicationController
 
   def create
     # @shop = Shop.find(params[:id])
-    @item = Item.find params[:item_id]
-    @amount = @item.stripe_amount.to_i #This is $5
+    @item = Item.find(params[:item_id])
+    @amount = @item.stripe_amount.to_i
     customer = Stripe::Customer.create(
     :email => params[:stripeEmail],
     :source  => params[:stripeToken]
@@ -25,7 +25,7 @@ class ChargesController < ApplicationController
     :receipt_email => customer.email
     )
 
-    # email customer, charge
+    # TODO add Pony email functionality
     charge
 
     rescue Stripe::CardError => e
@@ -39,7 +39,7 @@ class ChargesController < ApplicationController
 
 
   # def email customer, charge
-  #   # TODO Create layout and dynamic content
+  #  # TODO Create layout and dynamic content
   #   Pony.options = {
   #     :via => :smtp,
   #     :via_options => {

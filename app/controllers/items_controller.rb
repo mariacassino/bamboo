@@ -61,11 +61,14 @@ class ItemsController < ApplicationController
     redirect_to shop_path
   end
 
+  #chooses random item from shop to display
   def random
     @shop = Shop.find(params[:shop_id])
     @random = @shop.items.all.sample
   end
 
+  #displays form to let shop owner put an
+  #item on sale for whatever amount and number of days
   def new_sale
     @shop = Shop.find(params[:shop_id])
     @item = @shop.items.find(params[:item_id])
@@ -87,7 +90,8 @@ class ItemsController < ApplicationController
   private
 
   def approved_params
-    params.require(:item).permit(:name, :description, :price, :shop_id, :image, :sale_price, :sale_length)
+    params.require(:item).permit(:name, :description, :price, :shop_id, :image,
+      :sale_price, :sale_length)
   end
 
 
