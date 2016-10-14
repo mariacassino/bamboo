@@ -1,13 +1,23 @@
 class ChargesController < ApplicationController
 
   def new
-    @amount = @item.stripe_amount.to_i
+    if @item.on_sale = false
+      @amount = @item.stripe_amount.to_i
+    else
+      @amount = @item.stripe_sale_amount.to_i
+    end
   end
 
   def create
     # @shop = Shop.find(params[:id])
     @item = Item.find(params[:item_id])
-    @amount = @item.stripe_amount.to_i
+
+    if @item.on_sale = false
+      @amount = @item.stripe_amount.to_i
+    else
+      @amount = @item.stripe_sale_amount.to_i
+    end
+
     customer = Stripe::Customer.create(
     :email => params[:stripeEmail],
     :source  => params[:stripeToken]

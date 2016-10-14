@@ -9,5 +9,9 @@ class Item < ActiveRecord::Base
     price.to_f * 100
   end
 
+  def stripe_sale_amount
+    sale_price.to_f * 100
+  end
+
 
 end
