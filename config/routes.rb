@@ -9,6 +9,8 @@ Rails.application.routes.draw do
     get "/items/random", to: "items#random"
    resources :items do
      get "new_sale", to: "items#new_sale"
+     post "cancel_sale", to: "items#cancel_sale"
+     get "sale_cancelled", to: "items#sale_cancelled"
      resources :charges
    end
    collection { post :import }

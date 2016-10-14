@@ -81,12 +81,28 @@ class ItemsController < ApplicationController
     end
   end
 
+  def cancel_sale
+    @shop = Shop.find(params[:id])
+    @item = @shop.items.find(params[:shop_id])
+    @item.on_sale = false
+    if @item.save
+      redirect_to shop_item_sale_cancelled_path
+    else
+      flash[:notice] = "Error!"
+    end
+  end
+
+  def sale_cancelled
+    @shop = Shop.find(params[:id])
+    @item = @shop.items.find(params[:shop_id])
+  end
+
 
   private
 
   def approved_params
     params.require(:item).permit(:name, :description, :price, :shop_id, :image,
-      :sale_price, :sale_length)
+      :sale_price, :sale_length, :on_sale)
   end
 
 

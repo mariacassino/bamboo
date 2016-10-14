@@ -35,12 +35,14 @@
     <%=f.error_span(:sale_length) %>
   </div>
 
-  <!--submit/cancel buttons for sale form-->
+  <!--submit/cancel/cancel sale buttons for sale form-->
   <div class="form-group">
     <div class="col-lg-offset-2 col-lg-10">
       <%= f.submit nil, :class => 'btn btn-primary' %>
       <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
                 shop_path(@shop), :class => 'btn btn-default' %>
+      <%= link_to ('Cancel Sale'), shop_item_cancel_sale_path(@shop, @item), :class => 'btn btn-default btn-danger' %>
+
     </div>
   </div>
 
