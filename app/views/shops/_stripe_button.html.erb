@@ -6,7 +6,8 @@
       </div>
     <% end %>
     <label class="amount">
-      <span>Amount: <%= item.on_sale ? item.sale_price : item.price %></span>
+      <span><%= item.on_sale ? 'Sale Price' : 'Amount' %>
+        <%= item.on_sale ? item.sale_price : item.price %></span>
     </label>
   </article>
 
