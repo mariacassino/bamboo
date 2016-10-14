@@ -6,21 +6,29 @@
       <%= image_tag @item.image.url(:medium) %>
       <li><%= @item.name %></li>
       <li><%= @item.description %></li>
-      <!-- <li><%= number_to_currency(@item.price) %></li> -->
 
       <!--item sale info
 
       <% if @item.on_sale = true %>
        <li><%= "Sale Price: " + number_to_currency(@item.sale_price.to_s) %></li>
-        <li><%= "Sale Ends: " + @end_date.to_s %></li>
       <% end %> -->
 
-      <%= @item.on_sale ? 'Sale Price' : 'Amount' %>
-      <%= @item.on_sale ? number_to_currency(@item.sale_price) : number_to_currency(@item.price) %>
+      <li><%= @item.on_sale ? 'Sale Price:' : 'Amount:' %></li>
+      <li><%= @item.on_sale ? number_to_currency(@item.sale_price) : number_to_currency(@item.price) %></li>
+      <% if @item.on_sale = true %>
+          <li> <%= "Sale Ends: " + @end_date.to_s %> </li>
+      <% else %>
+          <li> <%= " " %> </li>
+      <% end %>
 
 
       <!--partial for Stripe 'Pay With Card' button -->
-      <%= render partial: 'shops/stripe_button', locals: { item: @item, shop: @shop }%>
+      <li><script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+          data-key="<%= ENV['PUBLISHABLE_KEY'] %>"
+          data-description=<%= @item.name %>
+          data-amount=<%= @item.on_sale ? @item.stripe_sale_amount : @item.stripe_amount  %>
+          data-locale="auto">
+        </script></li>
 
 
       <!--edit/delete item buttons-->
