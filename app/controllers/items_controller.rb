@@ -9,6 +9,12 @@ class ItemsController < ApplicationController
     @shop = Shop.find(params[:shop_id])
     @item = @shop.items.find(params[:id])
     @end_date = (@item.sale_start + @item.sale_length.days).strftime("%A, %B %e, %Y %l:%M %P %Z")
+    if @item.on_sale == true
+      @amount = @item.sale_price
+      @ending = "Sale Ends: #{@end_date}"
+    else
+      @amount = @item.price
+    end
   end
 
   def new
@@ -81,11 +87,14 @@ class ItemsController < ApplicationController
     end
   end
 
+  def edit_sale
+  end
+
   def cancel_sale
     @shop = Shop.find(params[:shop_id])
     @item = @shop.items.find(params[:item_id])
     @item.on_sale = false
-    @item.sale_price = @item.price 
+    @item.sale_price = @item.price
     if @item.save
       redirect_to shop_item_sale_cancelled_path
     else
@@ -97,6 +106,7 @@ class ItemsController < ApplicationController
     @shop = Shop.find(params[:shop_id])
     @item = @shop.items.find(params[:item_id])
   end
+
 
 
   private
