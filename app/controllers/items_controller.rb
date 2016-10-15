@@ -7,14 +7,21 @@ class ItemsController < ApplicationController
     @items = @shop.items.all
   end
 
+  # def sale_timed_out
+  #   @item.sale_length = 0
+  # end
+
   def show
     @shop = Shop.find(params[:shop_id])
     @item = @shop.items.find(params[:id])
     @end_date = (@item.sale_start + @item.sale_length.days).strftime("%A, %B %e, %Y %l:%M %P %Z")
+    if @item.sale_length == 0
+      @item.on_sale = false
+    end
     if @item.on_sale == true
       @original = "Original Price: " + number_to_currency(@item.price)
       @amount = "Now Only " + number_to_currency(@item.sale_price)
-      @ending = "Sale Ends: #{@end_date}"
+      @ending = "Sale Ends #{@end_date}"
     else
       @amount = number_to_currency(@item.price)
     end

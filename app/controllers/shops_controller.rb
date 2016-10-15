@@ -10,7 +10,15 @@ class ShopsController < ApplicationController
     @shop = Shop.find(params[:id])
     @items = @shop.items.all
     @random = @items.sample
+    @items.each do |item|
+      if item.sale_length == 0 
+        item.on_sale = false
+      end
+    end
   end
+
+
+
 
   def import
     file = params[:file]
