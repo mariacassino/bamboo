@@ -11,7 +11,6 @@
       <li><%= @ending %></li>
 
 
-
       <!--partial for Stripe 'Pay With Card' button -->
       <li><script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
           data-key="<%= ENV['PUBLISHABLE_KEY'] %>"
@@ -35,6 +34,7 @@
           :class => 'btn btn-xs btn-danger' %>
         <% end %>
       <% end %>
+
 
       <!--run a sale-->
     <% if current_user %>
