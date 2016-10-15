@@ -1,1 +1,8 @@
-<%= @item.name %> is no longer on sale 
+<%= @item.name %> is no longer on sale
+
+<!--navigation button returns to item view-->
+<p style="padding-left:15px;">
+<%= link_to shop_item_path(@shop, @item), class: "btn btn-default btn-sm" do %>
+  <span class="glyphicon glyphicon-arrow-left"></span> Return to Item
+<% end %>
+</p>
