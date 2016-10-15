@@ -1,4 +1,6 @@
 class ItemsController < ApplicationController
+  include ActionView::Helpers::NumberHelper
+
 
   def index
     @shop = Shop.find(params[:id])
@@ -10,10 +12,11 @@ class ItemsController < ApplicationController
     @item = @shop.items.find(params[:id])
     @end_date = (@item.sale_start + @item.sale_length.days).strftime("%A, %B %e, %Y %l:%M %P %Z")
     if @item.on_sale == true
-      @amount = @item.sale_price
+      @original = "Original Price: " + number_to_currency(@item.price)
+      @amount = "Now Only " + number_to_currency(@item.sale_price)
       @ending = "Sale Ends: #{@end_date}"
     else
-      @amount = @item.price
+      @amount = number_to_currency(@item.price)
     end
   end
 
