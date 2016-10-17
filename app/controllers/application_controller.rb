@@ -13,4 +13,14 @@ include Pundit
      redirect_to new_user_session_path
   end
 
+
+  def stripe_total
+    if @item.on_sale?
+      @amount = @item.stripe_sale_amount.to_i
+    else
+      @amount = @item.stripe_amount.to_i
+    end
+  end
+
+
 end

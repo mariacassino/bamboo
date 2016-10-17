@@ -1,22 +1,23 @@
 class ChargesController < ApplicationController
 
+  # def buy
+  #   if @item.on_sale?
+  #     @amount = @item.stripe_sale_amount.to_i
+  #   else
+  #     @amount = @item.stripe_amount.to_i
+  #   end
+  # end
+
+
   def new
-    if @item.on_sale = false
-      @amount = @item.stripe_amount.to_i
-    else
-      @amount = @item.stripe_sale_amount.to_i
-    end
+    stripe_total
   end
 
+
   def create
-    # @shop = Shop.find(params[:id])
     @item = Item.find(params[:item_id])
 
-    if @item.on_sale = false
-      @amount = @item.stripe_amount.to_i
-    else
-      @amount = @item.stripe_sale_amount.to_i
-    end
+    stripe_total
 
     customer = Stripe::Customer.create(
     :email => params[:stripeEmail],
@@ -41,9 +42,7 @@ class ChargesController < ApplicationController
     rescue Stripe::CardError => e
       flash[:error] = e.message
 
-      # redirect_to new_charge_path
       redirect_to new_shop_item_charge_path
-      # redirect_to shop_path(@shop)
 
   end
 

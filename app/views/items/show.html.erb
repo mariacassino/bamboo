@@ -8,18 +8,19 @@
       <li><%= @item.description %></li>
       <% if @item.on_sale? %>
         <strike><li><%= "Original Price: " + number_to_currency(@item.price) %></li></strike>
-        <li><%= @amount = "Now Only " + number_to_currency(@item.sale_price) %></li>
+        <li><%= "Now Only " + number_to_currency(@item.sale_price) %></li>
         <li><%= "Sale Ends #{@end_date}" %></li>
       <% else %>
-        <li><%= @amount = number_to_currency(@item.price) %></li>
+        <li><%=  number_to_currency(@item.price) %></li>
       <% end %>
 
 
-      <!--partial for Stripe 'Pay With Card' button -->
+      <!--partial for Stripe 'Pay With Card' button (see
+        ApplicationController#stripe_total for @amount) -->
       <li><script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
           data-key="<%= ENV['PUBLISHABLE_KEY'] %>"
           data-description=<%= @item.name %>
-          data-amount=<%= @item.on_sale? ? @item.stripe_sale_amount : @item.stripe_amount  %>
+          data-amount=<%= @amount %>
           data-locale="auto">
         </script></li>
 

@@ -11,6 +11,8 @@ class ItemsController < ApplicationController
     @shop = Shop.find(params[:shop_id])
     @item = @shop.items.find(params[:id])
     @end_date = (@item.sale_start + @item.sale_length.days).strftime("%A, %B %e, %Y %l:%M %P %Z")
+    stripe_total #new method in Application Controller; gives correct Stripe total
+                #depending on whether item is on sale or not
   end
 
   def new
