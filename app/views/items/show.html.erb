@@ -6,16 +6,20 @@
       <%= image_tag @item.image.url(:medium) %>
       <li><%= @item.name %></li>
       <li><%= @item.description %></li>
-      <strike><li><%= @original %></li></strike>
-      <li><%= @amount %></li>
-      <li><%= @ending %></li>
+      <% if @item.on_sale? %>
+        <strike><li><%= "Original Price: " + number_to_currency(@item.price) %></li></strike>
+        <li><%= @amount = "Now Only " + number_to_currency(@item.sale_price) %></li>
+        <li><%= "Sale Ends #{@end_date}" %></li>
+      <% else %>
+        <li><%= @amount = number_to_currency(@item.price) %></li>
+      <% end %>
 
 
       <!--partial for Stripe 'Pay With Card' button -->
       <li><script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
           data-key="<%= ENV['PUBLISHABLE_KEY'] %>"
           data-description=<%= @item.name %>
-          data-amount=<%= @item.on_sale ? @item.stripe_sale_amount : @item.stripe_amount  %>
+          data-amount=<%= @item.on_sale? ? @item.stripe_sale_amount : @item.stripe_amount  %>
           data-locale="auto">
         </script></li>
 
@@ -39,10 +43,10 @@
       <!--run a sale-->
     <% if current_user %>
       <% if policy(@item).edit? %>
-        <% if @item.on_sale == false %>
-          <h3><%= link_to "Put this item on sale to get it flying off the shelves!", shop_item_new_sale_path(@shop, @item) %></h3>
-        <% else %>
+        <% if @item.on_sale? %>
           <p><%= link_to "Edit Sale Info", shop_item_new_sale_path(@shop, @item) %></p>
+        <% else %>
+          <h3><%= link_to "Put this item on sale to get it flying off the shelves!", shop_item_new_sale_path(@shop, @item) %></h3>
         <% end %>
       <% end %>
     <% end %>

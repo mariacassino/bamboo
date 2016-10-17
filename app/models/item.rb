@@ -13,6 +13,12 @@ class Item < ActiveRecord::Base
     sale_price.to_f * 100
   end
 
-
+  def on_sale?
+    if sale_end > Time.now
+      return true
+    else
+      return false
+    end
+  end
 
 end

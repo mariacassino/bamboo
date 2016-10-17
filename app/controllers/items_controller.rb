@@ -7,24 +7,10 @@ class ItemsController < ApplicationController
     @items = @shop.items.all
   end
 
-  # def sale_timed_out
-  #   @item.sale_length = 0
-  # end
-
   def show
     @shop = Shop.find(params[:shop_id])
     @item = @shop.items.find(params[:id])
     @end_date = (@item.sale_start + @item.sale_length.days).strftime("%A, %B %e, %Y %l:%M %P %Z")
-    if @item.sale_length == 0
-      @item.on_sale = false
-    end
-    if @item.on_sale == true
-      @original = "Original Price: " + number_to_currency(@item.price)
-      @amount = "Now Only " + number_to_currency(@item.sale_price)
-      @ending = "Sale Ends #{@end_date}"
-    else
-      @amount = number_to_currency(@item.price)
-    end
   end
 
   def new
@@ -88,8 +74,8 @@ class ItemsController < ApplicationController
   def new_sale
     @shop = Shop.find(params[:shop_id])
     @item = @shop.items.find(params[:item_id])
-    @item.on_sale = true
-    @item.sale_start = Time.now.strftime("%A, %B %e, %Y %l:%M %P %Z")
+    @item.sale_start = Time.now #.strftime("%A, %B %e, %Y %l:%M %P %Z")
+    @item.sale_end = @item.sale_start + @item.sale_length.days #.strftime("%A, %B %e, %Y %l:%M %P %Z")
     if @item.save
       flash[:notice] = "Success!"
     else
@@ -103,7 +89,8 @@ class ItemsController < ApplicationController
   def cancel_sale
     @shop = Shop.find(params[:shop_id])
     @item = @shop.items.find(params[:item_id])
-    @item.on_sale = false
+    # @item.on_sale = false
+    @item.sale_end = Time.now
     @item.sale_price = @item.price
     if @item.save
       redirect_to shop_item_sale_cancelled_path
