@@ -75,7 +75,7 @@ class ItemsController < ApplicationController
     @shop = Shop.find(params[:shop_id])
     @item = @shop.items.find(params[:item_id])
     @item.sale_start = Time.now
-    @item.sale_end = @item.sale_start + @item.sale_length.days
+    @item.sale_end = Time.now + @item.sale_length.days
     if @item.save
       flash[:notice] = "Success!"
     else
