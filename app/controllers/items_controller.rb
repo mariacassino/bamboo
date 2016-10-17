@@ -74,8 +74,8 @@ class ItemsController < ApplicationController
   def new_sale
     @shop = Shop.find(params[:shop_id])
     @item = @shop.items.find(params[:item_id])
-    @item.sale_start = Time.now #.strftime("%A, %B %e, %Y %l:%M %P %Z")
-    @item.sale_end = @item.sale_start + @item.sale_length.days #.strftime("%A, %B %e, %Y %l:%M %P %Z")
+    @item.sale_start = Time.now
+    @item.sale_end = @item.sale_start + @item.sale_length.days
     if @item.save
       flash[:notice] = "Success!"
     else
@@ -83,13 +83,10 @@ class ItemsController < ApplicationController
     end
   end
 
-  def edit_sale
-  end
 
   def cancel_sale
     @shop = Shop.find(params[:shop_id])
     @item = @shop.items.find(params[:item_id])
-    # @item.on_sale = false
     @item.sale_end = Time.now
     @item.sale_price = @item.price
     if @item.save
@@ -98,6 +95,7 @@ class ItemsController < ApplicationController
       flash[:notice] = "Error!"
     end
   end
+
 
   def sale_cancelled
     @shop = Shop.find(params[:shop_id])
@@ -110,7 +108,7 @@ class ItemsController < ApplicationController
 
   def approved_params
     params.require(:item).permit(:name, :description, :price, :shop_id, :image,
-      :sale_price, :sale_length, :on_sale)
+      :sale_price, :sale_length)
   end
 
 

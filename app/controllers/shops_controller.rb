@@ -6,18 +6,12 @@ class ShopsController < ApplicationController
     @shops = Shop.all
   end
 
+
   def show
     @shop = Shop.find(params[:id])
     @items = @shop.items.all
     @random = @items.sample
-    @items.each do |item|
-      if item.sale_length == 0 
-        item.on_sale = false
-      end
-    end
   end
-
-
 
 
   def import
@@ -31,13 +25,16 @@ class ShopsController < ApplicationController
     redirect_to shop_path(shop)
   end
 
+
   def test
   end
+
 
   def new
     @shop = Shop.new
     @shop.user_id = current_user.id
   end
+
 
   def create
     @shop = Shop.new(approved_params)
@@ -50,10 +47,12 @@ class ShopsController < ApplicationController
     end
   end
 
+
   def edit
     @shop = Shop.find(params[:id])
     authorize @shop
   end
+
 
   def update
     @shops = Shop.all
@@ -66,6 +65,7 @@ class ShopsController < ApplicationController
       redirect_to shops_path
     end
   end
+
 
   def destroy
     @shop = Shop.find(params[:id])

@@ -6,18 +6,16 @@
 <% end %>
 
 <% if @random %>
-
-<h3>Random Item:</h3>
-<div class="well">
-  <ul class="list-unstyled">
-    <%= image_tag @random.image.url(:thumb) %>
-    <li><%=link_to @random.name, shop_item_path(@shop, @random.id) %></li>
-    <li><%= @random.description %></li>
-    <%= render partial: 'shops/stripe_button', locals: { item: @random, shop: @shop }%>
-  </ul>
-  <h3><%= link_to "Click here to be whisked away to another randomly-selected item!", shop_items_random_path(@shop) %></h3>
-</div>
-
+  <h3>Random Item:</h3>
+  <div class="well">
+    <ul class="list-unstyled">
+      <%= image_tag @random.image.url(:thumb) %>
+      <li><%=link_to @random.name, shop_item_path(@shop, @random.id) %></li>
+      <li><%= @random.description %></li>
+      <%= render partial: 'shops/stripe_button', locals: { item: @random, shop: @shop }%>
+    </ul>
+    <h3><%= link_to "Click here to be whisked away to another randomly-selected item!", shop_items_random_path(@shop) %></h3>
+  </div>
 <% end %>
 
 <% if @items %>

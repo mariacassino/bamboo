@@ -46,7 +46,7 @@
         <% if @item.on_sale? %>
           <p><%= link_to "Edit Sale Info", shop_item_new_sale_path(@shop, @item) %></p>
         <% else %>
-          <h3><%= link_to "Put this item on sale to get it flying off the shelves!", shop_item_new_sale_path(@shop, @item) %></h3>
+          <h3><%= link_to "Sell this item on clearance to get it flying off the shelves!", shop_item_new_sale_path(@shop, @item) %></h3>
         <% end %>
       <% end %>
     <% end %>
