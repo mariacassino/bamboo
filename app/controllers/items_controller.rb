@@ -78,6 +78,7 @@ class ItemsController < ApplicationController
     @item = @shop.items.find(params[:item_id])
     @item.sale_start = Time.now
     @item.sale_end = Time.now + @item.sale_length.days
+    @sale_percents = [10, 25, 50, 75, 90]
     if @item.save
       flash[:notice] = "Success!"
     else

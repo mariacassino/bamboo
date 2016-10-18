@@ -24,7 +24,7 @@
     <div class="col-lg-6">
       <%= f.text_field :sale_price, :class => 'form-control' %>
     </div>
-    <%=f.error_span(:sale_price) %>
+    <%= f.error_span(:sale_price) %>
   </div>
 
   <div class="form-group">
@@ -32,8 +32,16 @@
     <div class="col-lg-6">
       <%= f.text_field :sale_length, :class => 'form-control' %>
     </div>
-    <%=f.error_span(:sale_length) %>
+    <%= f.error_span(:sale_length) %>
   </div>
+
+
+<% if current_user %>
+<%= f.collection_select :sale_percent, @sale_percents, :to_s, :to_s %>
+<% end %>
+
+
+
 
 
   <!--submit/cancel/cancel sale buttons for sale form-->
