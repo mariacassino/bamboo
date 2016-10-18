@@ -7,13 +7,15 @@ class ItemsController < ApplicationController
     @items = @shop.items.all
   end
 
+
   def show
     @shop = Shop.find(params[:shop_id])
     @item = @shop.items.find(params[:id])
     @end_date = (@item.sale_start + @item.sale_length.days).strftime("%A, %B %e, %Y %l:%M %P %Z")
-    stripe_total #new method in Application Controller; gives correct Stripe total
+    stripe_total #new method in ApplicationController; gives correct Stripe total
                 #depending on whether item is on sale or not
   end
+
 
   def new
     @shop = Shop.find(params[:shop_id])
@@ -22,6 +24,7 @@ class ItemsController < ApplicationController
     authorize @item
     @item.user_id = current_user.id
   end
+
 
   def create
     @shop = Shop.find(params[:shop_id])
@@ -37,6 +40,7 @@ class ItemsController < ApplicationController
     end
   end
 
+
   def edit
     @shop = Shop.find(params[:id])
     authorize @shop
@@ -44,6 +48,7 @@ class ItemsController < ApplicationController
     @item = @shop.items.find(params[:shop_id])
     authorize @item
   end
+
 
   def update
     @shop = Shop.find(params[:shop_id])
@@ -57,6 +62,7 @@ class ItemsController < ApplicationController
     end
   end
 
+
   def destroy
     @shop = Shop.find(params[:id])
     @item = @shop.items.find(params[:shop_id])
@@ -65,11 +71,13 @@ class ItemsController < ApplicationController
     redirect_to shop_path
   end
 
+
   #chooses random item from shop to display
   def random
     @shop = Shop.find(params[:shop_id])
     @random = @shop.items.all.sample
   end
+
 
   #displays form to let shop owner put an
   #item on sale for whatever amount and number of days
@@ -99,6 +107,7 @@ class ItemsController < ApplicationController
   end
 
 
+  #displays confirmation of sale cancellation
   def sale_cancelled
     @shop = Shop.find(params[:shop_id])
     @item = @shop.items.find(params[:item_id])

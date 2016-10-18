@@ -5,13 +5,16 @@ class Item < ActiveRecord::Base
   has_attached_file :image, styles: { medium: "300x300>", thumb: "100x100>" }
   validates_attachment_content_type :image, content_type: /\Aimage\/.*\z/
 
+
   def stripe_amount
     price.to_f * 100
   end
 
+
   def stripe_sale_amount
     sale_price.to_f * 100
   end
+
 
   def on_sale?
     if sale_end > Time.now
@@ -20,5 +23,6 @@ class Item < ActiveRecord::Base
       return false
     end
   end
+
 
 end
